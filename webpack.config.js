@@ -49,7 +49,8 @@ module.exports=[
 		devtool: 'sourcemap',
 		devServer:{
 			port:8081,
-			contentBase:"dist"
+			contentBase:"dist",
+			historyApiFallback: true
 		}
 	}),
 	Object.assign({},common,{
