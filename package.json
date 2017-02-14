@@ -14,15 +14,20 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
+    "babel-cli": "^6.23.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
     "react-router": "^3.0.2",
     "redux": "^3.6.0"
   },
+  "babel":{
+      "presets": ["es2015","stage-0"]
+  },
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "npm run clean && webpack  --progress -p",
+    "start":"babel-node ./server",
+    "dev":"webpack-dev-server",
+    "build": "npm run clean && webpack --env=production --progress -p",
     "clean": "rimraf dist/*"
   }
 }
