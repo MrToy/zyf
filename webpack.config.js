@@ -1,7 +1,9 @@
 var path=require('path')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
-var assetsPath="./build"
-var publicPath="./public"
+
+var assetsPath=path.join(__dirname,"dist")
+var publicPath="/"
 var loaders=[
 	{ 
 		test: /\.js$/, 
@@ -13,23 +15,40 @@ var loaders=[
 			"plugins": ["transform-decorators-legacy"]
 		}
 	},
-	{ test: /\.png$/, loader: "url-loader" },
-	{ test: /\.jpg$/, loader: "file-loader" },
-	{ test: /\.css$/, use:["style-loader","css-loader"]}
+	{ test: /\.css$/, use:["style-loader","css-loader"]},
+	{
+		test: /\.(png|jpg|gif|woff|woff2)$/,
+        loader: 'url-loader',
+        options:{limit:8912}
+    },
+    {
+        test: /\.(mp4|ogg|svg)$/,
+        loader: 'file-loader'
+    }
 ]
 
 module.exports = [
 	{
 		name: "browser",
 		entry: "./src/index.js",
+		devtool: 'sourcemap',
 		output: {
 			path: assetsPath,
-			filename: "client.js",
+			filename: "[name].[hash].js",
 			publicPath: publicPath
 		},
 		module: {
 			rules: loaders
-		}
+		},
+		devServer:{
+			port:8080,
+			contentBase:"./dist"
+		},
+		plugins: [
+			new HtmlWebpackPlugin({
+				template: 'src/index.html'
+			})
+		]
 	},{
 		name: "server",
 		entry: "./src/index.js",
@@ -37,10 +56,9 @@ module.exports = [
 		output: {
 			path: assetsPath,
 			filename: "server.js",
-			publicPath: publicPath,
+			publicPath:publicPath ,
 			libraryTarget: "commonjs2"
 		},
-		externals: /^[a-z\-0-9]+$/,
 		module: {
 			rules: loaders
 		}
