@@ -43,34 +43,26 @@ var common={
 	]
 }
 
-module.exports=env=>{
-	if(env=="production"){
-		return [
-			Object.assign({},common,{
-				name:"browser",
-				devtool: 'sourcemap'
-			}),
-			Object.assign({},common,{
-				name: "server",
-				target:"node",
-				output:Object.assign({},common.output,{
-					filename: "server.js",
-					libraryTarget:"commonjs2"
-				}),
-				plugins: [
-					new webpack.DefinePlugin({
-						__BROWSER__:false
-					})
-				]
+module.exports=[
+	Object.assign({},common,{
+		name:"browser",
+		devtool: 'sourcemap',
+		devServer:{
+			port:8081,
+			contentBase:"dist"
+		}
+	}),
+	Object.assign({},common,{
+		name: "server",
+		target:"node",
+		output:Object.assign({},common.output,{
+			filename: "server.js",
+			libraryTarget:"commonjs2"
+		}),
+		plugins: [
+			new webpack.DefinePlugin({
+				__BROWSER__:false
 			})
 		]
-	}else{
-		return Object.assign({},common,{
-			name:"dev",
-			devServer:{
-				port:8081,
-				contentBase:"dist"
-			}
-		})
-	}
-}
+	})
+]
