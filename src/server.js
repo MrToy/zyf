@@ -7,15 +7,9 @@ import routes from './routes'
 import fs from 'fs'
 import store from './store'
 
-const AppServer=props=>(
-	<Provider store={store}>
-		<RouterContext {...props}/>
-	</Provider>
-)
+var html=fs.readFileSync('./dist/client/index.html').toString()
 
 const app=express()
-
-var html=fs.readFileSync('./dist/client/index.html').toString()
 app.get('/assets/*',express.static('./dist/client'))
 app.get('*',(req,res)=>{
 	match({routes,location:req.url},(err, redir,props) => {
@@ -24,7 +18,12 @@ app.get('*',(req,res)=>{
 		}else if(redir){
 			res.redirect(302,redir.pathname+redir.search)
 		}else if(props){
-			var content=renderToString(<AppServer {...props} />)
+			const Box=props=>(
+				<Provider store={store}>
+					<RouterContext {...props}/>
+				</Provider>
+			)
+			var content=renderToString(Box(props))
 			var data=html.replace("<!-- react-server-content -->",content)
 			res.status(200).send(data)
 		}else{

@@ -1,8 +1,6 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import Main from './Main'
-import { Provider } from 'react-redux'
-import {RouterContext,Router, Route,browserHistory} from 'react-router'
+import {Route} from 'react-router'
 
 
 const routes=(
