@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import {bindActions} from './store'
-import {changeUser} from './store/user'
+import {bindActions} from '../store'
+import {changeUser} from '../store/user'
+//import "./index.css"
 
 @connect(store=>({store}),bindActions({changeUser}))
 export default class Main extends Component {

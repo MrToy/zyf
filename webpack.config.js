@@ -61,7 +61,7 @@ module.exports=[
 		},
 		output:{
 			path: path.join(__dirname,"dist/client"),
-			filename: "assets/[name].[hash].js",
+			filename: "assets/[name].[chunkhash:6].js",
 			publicPath: '/'
 		},
 		devtool: 'sourcemap',
