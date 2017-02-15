@@ -1,16 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import store from './store'
-import { Provider } from 'react-redux'
 import {Router,browserHistory} from 'react-router'
+import Box from './Box'
 import routes from './routes'
 
 export const App=()=>(
-	<Provider store={store}>
+	<Box>
 		<Router history={browserHistory}>
 			{routes}
 		</Router>
-	</Provider>
+	</Box>
 )
 
 ReactDOM.render(<App />,document.getElementById('root'))
