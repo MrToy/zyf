@@ -3,7 +3,7 @@ import React from 'react'
 import {renderToString} from 'react-dom/server'
 import {RouterContext,match} from 'react-router'
 import {Provider} from 'react-redux'
-import {routes,Box} from '../dist/server'
+import {routes,App} from '../dist/server'
 import fs from 'fs'
 
 var html=fs.readFileSync('./dist/index.html').toString()
@@ -17,7 +17,7 @@ app.get('*',(req,res)=>{
 		}else if(redir){
 			res.redirect(302,redir.pathname+redir.search)
 		}else if(props){
-			var content=renderToString(Box(props))
+			var content=renderToString(App(props))
 			var data=html.replace("<!-- react-server-content -->",content)
 			res.status(200).send(data)
 		}else{
