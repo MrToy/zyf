@@ -1,8 +1,13 @@
 var path=require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var webpack=require('webpack')
-
+var ExtractTextPlugin=require('extract-text-webpack-plugin')
 var common={
+	output:{
+		path: path.join(__dirname,"dist/client"),
+		filename: "assets/[name].[chunkhash:6].js",
+		publicPath: '/'
+	},
 	module: {
 		rules:[
 			{
@@ -38,7 +43,7 @@ var common={
 					"plugins": ["transform-decorators-legacy"]
 				}
 			},
-			{ test: /\.css$/, use:["style-loader","css-loader"]},
+			{ test: /\.css$/, use:ExtractTextPlugin.extract({use:"css-loader"})},
 			{
 				test: /\.(png|jpg|gif|woff|woff2)$/,
 				loader: 'url-loader',
@@ -47,9 +52,21 @@ var common={
 			{
 				test: /\.(mp4|ogg|svg)$/,
 				loader: 'file-loader'
+			},
+			{
+				test: /\.styl/,
+				use:ExtractTextPlugin.extract({
+					use:[{
+						loader:'css-loader',
+						options:{modules:true}
+					},'stylus-loader']
+				})
 			}
 		]
-	}
+	},
+	plugins: [
+		new ExtractTextPlugin({filename:'assets/styles-[contenthash:6].css'})
+	]
 }
 
 module.exports=[
@@ -59,43 +76,29 @@ module.exports=[
 			app:"./src/client.js",
 			react:["react", "react-dom", "react-router","react-redux", "redux"]
 		},
-		output:{
-			path: path.join(__dirname,"dist/client"),
-			filename: "assets/[name].[chunkhash:6].js",
-			publicPath: '/'
-		},
 		devtool: 'sourcemap',
 		devServer:{
 			port:8081,
 			contentBase:"dist/client",
 			historyApiFallback: true
 		},
-		plugins:[
+		plugins:common.plugins.concat([
 			new HtmlWebpackPlugin({
 				template: 'src/index.html'
-			}),
-			new webpack.DefinePlugin({
-				__BROWSER__:true
 			}),
 			new webpack.optimize.CommonsChunkPlugin({
 				names:["react"]
 			})
-		]
+		])
 	}),
 	Object.assign({},common,{
 		name: "server",
 		entry:"./src/server.js",
 		target:"node",
-		output:{
-			path: path.join(__dirname,"dist/client"),
+		output:Object.assign({},common.output,{
 			filename: "../server/index.js",
 			libraryTarget:"commonjs2"
-		},
-		externals: /^[a-z\-0-9]+$/,
-		plugins: [
-			new webpack.DefinePlugin({
-				__BROWSER__:false
-			})
-		]
+		}),
+		externals: /^[a-z\-0-9]+$/
 	})
 ]
