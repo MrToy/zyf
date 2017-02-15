@@ -65,7 +65,7 @@ var common={
 		]
 	},
 	plugins: [
-		new ExtractTextPlugin({filename:'assets/styles-[contenthash:6].css'})
+		new ExtractTextPlugin({filename:'assets/styles.[contenthash:6].css'})
 	]
 }
 
@@ -73,12 +73,12 @@ module.exports=[
 	Object.assign({},common,{
 		name:"browser",
 		entry:{
-			app:"./src/client.js",
+			main:"./src/client.js",
 			react:["react", "react-dom", "react-router","react-redux", "redux"]
 		},
 		devtool: 'sourcemap',
 		devServer:{
-			port:8081,
+			port:8080,
 			contentBase:common.output.path,
 			historyApiFallback: true
 		},
