@@ -4,7 +4,7 @@ var webpack=require('webpack')
 var ExtractTextPlugin=require('extract-text-webpack-plugin')
 var common={
 	output:{
-		path: path.join(__dirname,"dist/client"),
+		path: path.join(__dirname,"dist"),
 		filename: "assets/[name].[chunkhash:6].js",
 		publicPath: '/'
 	},
@@ -79,7 +79,7 @@ module.exports=[
 		devtool: 'sourcemap',
 		devServer:{
 			port:8081,
-			contentBase:"dist/client",
+			contentBase:common.output.path,
 			historyApiFallback: true
 		},
 		plugins:common.plugins.concat([
@@ -96,7 +96,7 @@ module.exports=[
 		entry:"./src/server.js",
 		target:"node",
 		output:Object.assign({},common.output,{
-			filename: "../server/index.js",
+			filename: "server.js",
 			libraryTarget:"commonjs2"
 		}),
 		externals: /^[a-z\-0-9]+$/
