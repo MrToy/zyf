@@ -1,4 +1,5 @@
 import {createStore,combineReducers} from 'redux'
+import Store from 'store'
 
 const config=(state={key:0},action)=>{
 	switch(action.type){
@@ -12,12 +13,16 @@ const config=(state={key:0},action)=>{
 const user=(state={name:'toy',age:16},action)=>{
 	switch(action.type){
 		case 'user/change':
-			return {...state,...{name:'other',age:state.age+1}}
+			return {...state,...action.data}
 		default:
 			return state
 	}
 }
 
-const store = createStore(combineReducers({user,config}))
+const store = createStore(combineReducers({user,config}),Store.get("cache"))
+
+store.subscribe(()=>{
+	Store.set("cache",store.getState())
+})
 
 export default store

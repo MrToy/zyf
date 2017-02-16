@@ -1,5 +1,5 @@
-import store from './store'
+import store from './'
 
 export const change=(name)=>{
-	store.dispatch({type:'user/change',name})
+	store.dispatch({type:'user/change',data:{name}})
 }
