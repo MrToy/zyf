@@ -1,12 +1,5 @@
-export const user=(state={name:'toy',age:16},action)=>{
-	switch(action.type){
-		case 'user/change':
-			return {...state,...{name:'other',age:state.age+1}}
-		default:
-			return state
-	}
-}
+import store from './store'
 
-export const changeUser=(name)=>dispatch=>{
-	dispatch({type:'user/change',name})
+export const change=(name)=>{
+	store.dispatch({type:'user/change',name})
 }

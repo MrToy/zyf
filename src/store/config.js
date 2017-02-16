@@ -1,12 +1,10 @@
-export const config=(state={type:'x'},action)=>{
-	switch(action.type){
-		case 'config/change':
-			return {...state,...{type:'xx'}}
-		default:
-			return state
-	}
-}
+import db from './db'
+import store from './'
 
-export const changeConfig=(name)=>dispatch=>{
-	dispatch({type:'config/change',name})
+db.ref('config').on('value',res=>{
+	store.dispatch({type:'config/change',data:res.val()})
+})
+
+export const change=()=>{
+	db.ref('config').set({key:Math.random()})
 }
