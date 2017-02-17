@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "node ./server/_index",
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --env=dev",
     "build": "rimraf dist/* && webpack --hide-modules --progress -p"
   }
 }

@@ -69,14 +69,14 @@ var common={
 	]
 }
 
-module.exports=[
+module.exports=env=>([
 	Object.assign({},common,{
 		name:"browser",
 		entry:{
-			main:"./src/client.js",
+			main:"./src/index.client.js",
 			react:["react", "react-dom", "react-router","react-redux", "redux"]
 		},
-		devtool: 'sourcemap',
+		devtool:env=='dev'&&'cheap-module-eval-source-map',
 		devServer:{
 			port:8080,
 			contentBase:common.output.path,
@@ -88,12 +88,16 @@ module.exports=[
 			}),
 			new webpack.optimize.CommonsChunkPlugin({
 				names:["react"]
-			})
+			}),
+			...(env=='dev'?[]:[new webpack.optimize.UglifyJsPlugin({
+				compress: { warnings: false },
+				output: { comments: false }
+			})])
 		])
 	}),
 	Object.assign({},common,{
 		name: "server",
-		entry:"./src/server.js",
+		entry:"./src/index.server.js",
 		target:"node",
 		output:Object.assign({},common.output,{
 			filename: "server.js",
@@ -101,4 +105,4 @@ module.exports=[
 		}),
 		externals: /^[a-z\-0-9]+$/
 	})
-]
+])

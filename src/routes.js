@@ -1,8 +1,13 @@
 import React from 'react'
-import Main from './Main'
-import {Route} from 'react-router'
+import {Route,IndexRoute} from 'react-router'
+import Box from './Box'
 
-const routes=(
-	<Route path='*' component={Main} />
+
+const wait=promise=>(state,cb)=>promise.then(component=>cb(null,component.default))
+
+export default (
+	<Route path='/' component={Box}>
+		<IndexRoute getComponent={wait(import('./Main'))} />
+	</Route>
 )
-export default routes
+
