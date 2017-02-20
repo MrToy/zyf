@@ -1,6 +1,14 @@
 {
   "rules": {
-    ".read": true,
-    ".write": true
+    "config":{
+      ".read": true,
+      ".write": "root.child('users/'+auth.uid+'/admin').val()==true"
+    },
+    "users":{
+      "$uid":{
+        ".read":"auth != null && auth.uid == $uid",
+        ".write":false
+      }
+    }
   }
 }

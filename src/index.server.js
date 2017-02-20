@@ -1,7 +1,11 @@
 import React from 'react'
-import {RouterContext} from 'react-router'
-export routes from './routes'
+import {StaticRouter} from 'react-router-dom'
+import Box from './Box'
 
-export const App=props=>(
-	<RouterContext {...props}/>
+const router=(location,context)=>(
+	<StaticRouter location={location} context={context}>
+		<Box />
+    </StaticRouter>
 )
+
+export default router

@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Router,browserHistory} from 'react-router'
-import routes from './routes'
+import {BrowserRouter} from 'react-router-dom'
+import Box from './Box'
 
 
 ReactDOM.render(
-	<Router history={browserHistory}>{routes}</Router>
+	<BrowserRouter>
+		<Box />
+	</BrowserRouter>
 ,document.getElementById('root'))

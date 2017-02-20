@@ -10,10 +10,12 @@ const config=(state={key:0},action)=>{
 	}
 }
 
-const user=(state={name:'toy',age:16},action)=>{
+const user=(state=null,action)=>{
 	switch(action.type){
-		case 'user/change':
+		case 'user/login':
 			return {...state,...action.data}
+		case 'user/logout':
+			return null
 		default:
 			return state
 	}

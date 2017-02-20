@@ -2,6 +2,7 @@ var path=require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var webpack=require('webpack')
 var ExtractTextPlugin=require('extract-text-webpack-plugin')
+
 var common={
 	output:{
 		path: path.join(__dirname,"dist"),
@@ -43,29 +44,36 @@ var common={
 					"plugins": ["transform-decorators-legacy"]
 				}
 			},
-			{ test: /\.css$/, use:ExtractTextPlugin.extract({use:"css-loader"})},
+			{ test: /\.css$/, use:ExtractTextPlugin.extract({
+				fallback: 'style-loader',
+				use:[
+					{loader:'css-loader',options:{importLoaders:1}},
+					{loader:'postcss-loader',options:{plugins:()=>([require('autoprefixer')])}},
+				]
+			})},
+			{
+				test: /\.styl/,use:ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use:[
+						{loader:'css-loader',options:{modules:true,importLoaders:1}},
+						{loader:'postcss-loader',options:{plugins:()=>([require('autoprefixer')])}},
+						'stylus-loader'
+					]
+				})
+			},
 			{
 				test: /\.(png|jpg|gif|woff|woff2)$/,
 				loader: 'url-loader',
-				options:{limit:8912}
+				options:{limit:8912,name:"assets/[name].[hash:6].[ext]"}
 			},
 			{
 				test: /\.(mp4|ogg|svg)$/,
 				loader: 'file-loader'
-			},
-			{
-				test: /\.styl/,
-				use:ExtractTextPlugin.extract({
-					use:[{
-						loader:'css-loader',
-						options:{modules:true}
-					},'stylus-loader']
-				})
 			}
 		]
 	},
 	plugins: [
-		new ExtractTextPlugin({filename:'assets/styles.[contenthash:6].css'})
+		new ExtractTextPlugin({filename:'assets/styles.[contenthash:6].css',allChunks:true})
 	]
 }
 
@@ -74,7 +82,7 @@ module.exports=env=>([
 		name:"browser",
 		entry:{
 			main:"./src/index.client.js",
-			react:["react", "react-dom", "react-router","react-redux", "redux"]
+			react:["react", "react-dom", "react-router-dom","react-redux", "redux"]
 		},
 		devtool:env=='dev'&&'cheap-module-eval-source-map',
 		devServer:{
@@ -100,7 +108,8 @@ module.exports=env=>([
 		entry:"./src/index.server.js",
 		target:"node",
 		output:Object.assign({},common.output,{
-			filename: "server.js",
+			filename: "server/index.js",
+			chunkFilename:"server/[id].js",
 			libraryTarget:"commonjs2"
 		}),
 		externals: /^[a-z\-0-9]+$/
