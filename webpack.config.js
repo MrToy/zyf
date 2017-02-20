@@ -5,7 +5,7 @@ var ExtractTextPlugin=require('extract-text-webpack-plugin')
 
 var common={
 	output:{
-		path: path.join(__dirname,"dist"),
+		path: path.join(__dirname,"dist/client"),
 		filename: "assets/[name].[chunkhash:6].js",
 		publicPath: '/'
 	},
@@ -77,18 +77,29 @@ var common={
 	]
 }
 
-module.exports=env=>([
+
+const devConfig=Object.assign({},common,{
+	name:"dev-browser",
+	entry:"./src/client.js",
+	devtool:'cheap-module-eval-source-map',
+	devServer:{
+		port:8080,
+		contentBase:common.output.path,
+		historyApiFallback: true
+	},
+	plugins:common.plugins.concat([
+		new HtmlWebpackPlugin({
+			template: 'src/index.html'
+		})
+	])
+})
+
+const prodConfig=[
 	Object.assign({},common,{
 		name:"browser",
 		entry:{
-			main:"./src/index.client.js",
+			main:"./src/client.js",
 			react:["react", "react-dom", "react-router-dom","react-redux", "redux"]
-		},
-		devtool:env=='dev'&&'cheap-module-eval-source-map',
-		devServer:{
-			port:8080,
-			contentBase:common.output.path,
-			historyApiFallback: true
 		},
 		plugins:common.plugins.concat([
 			new HtmlWebpackPlugin({
@@ -97,21 +108,24 @@ module.exports=env=>([
 			new webpack.optimize.CommonsChunkPlugin({
 				names:["react"]
 			}),
-			...(env=='dev'?[]:[new webpack.optimize.UglifyJsPlugin({
+			new webpack.optimize.UglifyJsPlugin({
 				compress: { warnings: false },
 				output: { comments: false }
-			})])
+			})
 		])
 	}),
 	Object.assign({},common,{
 		name: "server",
-		entry:"./src/index.server.js",
+		entry:"./src/server.js",
 		target:"node",
 		output:Object.assign({},common.output,{
-			filename: "server/index.js",
-			chunkFilename:"server/[id].js",
+			path:path.join(__dirname,"dist/server"),
+			filename: "index.js",
 			libraryTarget:"commonjs2"
 		}),
 		externals: /^[a-z\-0-9]+$/
 	})
-])
+]
+
+
+module.exports=env=>env=="dev"?devConfig:prodConfig

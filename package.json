@@ -41,7 +41,7 @@
     "redux": "^3.6.0"
   },
   "scripts": {
-    "start": "node ./server/_index",
+    "start": "node ./dist/server",
     "dev": "webpack-dev-server --env=dev",
     "build": "rimraf dist/* && webpack --hide-modules --progress -p"
   }
