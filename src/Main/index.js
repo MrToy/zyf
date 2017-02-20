@@ -18,6 +18,7 @@ export default class extends Component {
 		return (
 			<div className={style.box}>
 				<Header />
+				<i className={style.plus}></i>
 				<h2>{JSON.stringify({config,user})}</h2>
 				<p>233xx</p>
 				<button onClick={()=>configActions.change()}>click me</button>

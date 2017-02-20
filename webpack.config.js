@@ -3,6 +3,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var webpack=require('webpack')
 var ExtractTextPlugin=require('extract-text-webpack-plugin')
 
+
+var postcssLoader={loader:'postcss-loader',options:{plugins:()=>([require('autoprefixer'),require('postcss-svg-fragments')])}}
+var cssLoader={loader:'css-loader',options:{modules:true,importLoaders:1,localIdentName:"[local]-[hash:6]"}}
 var common={
 	output:{
 		path: path.join(__dirname,"dist/client"),
@@ -46,21 +49,18 @@ var common={
 					}
 				}]
 			},
-			{ test: /\.css$/, use:ExtractTextPlugin.extract({
+			{ test: /\.css$/,include:"./node_modules",use:ExtractTextPlugin.extract({
 				fallback: 'style-loader',
-				use:[
-					{loader:'css-loader',options:{importLoaders:1}},
-					{loader:'postcss-loader',options:{plugins:()=>([require('autoprefixer')])}},
-				]
+				use:"css-loader"
+			})},
+			{ test: /\.css$/,exclude:"./node_modules",use:ExtractTextPlugin.extract({
+				fallback: 'style-loader',
+				use:[cssLoader,postcssLoader]
 			})},
 			{
 				test: /\.styl/,use:ExtractTextPlugin.extract({
 					fallback: 'style-loader',
-					use:[
-						{loader:'css-loader',options:{modules:true,importLoaders:1}},
-						{loader:'postcss-loader',options:{plugins:()=>([require('autoprefixer')])}},
-						'stylus-loader'
-					]
+					use:[cssLoader,postcssLoader,'stylus-loader']
 				})
 			},
 			{
@@ -75,7 +75,7 @@ var common={
 		]
 	},
 	plugins: [
-		new ExtractTextPlugin({filename:'assets/styles.[contenthash:6].css',allChunks:true})
+		new ExtractTextPlugin({filename:'assets/styles.[contenthash:6].css'})
 	]
 }
 
