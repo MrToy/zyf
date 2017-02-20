@@ -6,7 +6,7 @@ var ExtractTextPlugin=require('extract-text-webpack-plugin')
 var common={
 	output:{
 		path: path.join(__dirname,"dist/client"),
-		filename: "assets/[name].[chunkhash:6].js",
+		filename: "assets/[name].[hash:6].js",
 		publicPath: '/'
 	},
 	module: {
@@ -36,13 +36,15 @@ var common={
 			},
 			{ 
 				test: /\.js$/, 
-				loader: "babel-loader",
 				exclude:/node_modules/,
-				options:{
-					babelrc: false,
-					"presets": ["es2015","stage-0","react"],
-					"plugins": ["transform-decorators-legacy"]
-				}
+				use:[{
+					loader: "babel-loader",
+					options:{
+						babelrc: false,
+						"presets": ["es2015","stage-0","react"],
+						"plugins": ["transform-decorators-legacy"]
+					}
+				}]
 			},
 			{ test: /\.css$/, use:ExtractTextPlugin.extract({
 				fallback: 'style-loader',
@@ -78,22 +80,6 @@ var common={
 }
 
 
-const devConfig=Object.assign({},common,{
-	name:"dev-browser",
-	entry:"./src/client.js",
-	devtool:'cheap-module-eval-source-map',
-	devServer:{
-		port:8080,
-		contentBase:common.output.path,
-		historyApiFallback: true
-	},
-	plugins:common.plugins.concat([
-		new HtmlWebpackPlugin({
-			template: 'src/index.html'
-		})
-	])
-})
-
 const prodConfig=[
 	Object.assign({},common,{
 		name:"browser",
@@ -126,6 +112,27 @@ const prodConfig=[
 		externals: /^[a-z\-0-9]+$/
 	})
 ]
+
+const devConfig=Object.assign({},common,{
+	name:"dev-browser",
+	entry:[
+		'webpack/hot/only-dev-server',
+		prodConfig[0].entry.main
+	],
+	devtool:'eval-source-map',
+	devServer:{
+		hot:true,
+		port:8080,
+		contentBase:common.output.path,
+		historyApiFallback: true
+	},
+	plugins:common.plugins.concat([
+		new webpack.HotModuleReplacementPlugin(),
+		new HtmlWebpackPlugin({template: 'src/index.html'})
+	])
+})
+devConfig.module.rules[1].use.unshift("react-hot-loader")
+
 
 
 module.exports=env=>env=="dev"?devConfig:prodConfig

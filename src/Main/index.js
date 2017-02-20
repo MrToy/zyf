@@ -5,9 +5,9 @@ import * as userActions from '../store/user'
 import style from './index.styl'
 
 
-const Header=props=>(
+const Header=()=>(
 	<div className={style.header}>
-		<img src={require("./logo.png")} />		
+		<img src={require("./logo.png")} />
 	</div>
 )
 
