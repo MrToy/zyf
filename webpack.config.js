@@ -4,7 +4,7 @@ var webpack=require('webpack')
 var ExtractTextPlugin=require('extract-text-webpack-plugin')
 
 
-var postcssLoader={loader:'postcss-loader',options:{plugins:()=>([require('autoprefixer'),require('postcss-svg-fragments')])}}
+var postcssLoader={loader:'postcss-loader',options:{plugins:()=>([require('autoprefixer')])}}
 var cssLoader={loader:'css-loader',options:{modules:true,importLoaders:1,localIdentName:"[local]-[hash:6]"}}
 var common={
 	output:{
@@ -128,7 +128,7 @@ const devConfig=Object.assign({},common,{
 	},
 	plugins:common.plugins.concat([
 		new webpack.HotModuleReplacementPlugin(),
-		new HtmlWebpackPlugin({template: 'src/index.html'})
+		new HtmlWebpackPlugin({template:'src/index.html',favicon:'src/favicon.ico'})
 	])
 })
 devConfig.module.rules[1].use.unshift("react-hot-loader")

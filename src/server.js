@@ -23,7 +23,7 @@ app.get('*',(req,res)=>{
 				<App />
 			</StaticRouter>
 		)
-		var data=html.replace("<!-- react-server-content -->",content)
+		var data=html.replace("<!-- react-content -->",content)
 		res.send(data)
 	}
 })
