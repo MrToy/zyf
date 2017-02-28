@@ -5,7 +5,7 @@ import {renderToString} from 'react-dom/server'
 import {Provider} from 'react-redux'
 import path from 'path'
 import fs from 'fs'
-import Box from './Box'
+import App from './App'
 
 
 var html=fs.readFileSync('./dist/client/index.html').toString()
@@ -20,7 +20,7 @@ app.get('*',(req,res)=>{
 	}else {
 		var content=renderToString(
 			<StaticRouter location={req.url} context={context}>
-				<Box />
+				<App />
 			</StaticRouter>
 		)
 		var data=html.replace("<!-- react-server-content -->",content)

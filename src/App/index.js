@@ -1,5 +1,5 @@
 import React from 'react'
-//import {Route} from 'react-router-dom'
+import {Switch} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import store from '../store'
 import AsyncRoute from '../AsyncRoute'
@@ -7,15 +7,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import './index.styl'
 
 
-const App=()=>(
+export default ()=>(
 	<Provider store={store}>
 		<MuiThemeProvider>
-			<div>
-				<AsyncRoute exact path='/' render={import('../Main')} />
-				<AsyncRoute exact path='/admin' render={import('../Admin')} />
-			</div>
+			<Switch>
+				<AsyncRoute exact path='/' render={import('./Main')} />
+				<AsyncRoute path='/admin' render={import('./Admin')} />
+			</Switch>
 		</MuiThemeProvider>
 	</Provider>
 )
 
-export default App
