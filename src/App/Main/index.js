@@ -72,7 +72,7 @@ const Footer=()=>(
 )
 
 
-export default ({match})=>(
+export default ()=>(
 	<div>
 		<Header />
 		<NavBar />
@@ -80,6 +80,7 @@ export default ({match})=>(
 			<Switch>
 				<AsyncRoute exact path='/' render={import('./Home')} />
 				<AsyncRoute path='/about' render={import('./About')} />
+				<AsyncRoute path='/join' render={import('./Join')} />
 			</Switch>
 		</div>
 		<Links />
