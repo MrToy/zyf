@@ -1,0 +1,148 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.6.0/bin/node /usr/local/bin/firebase deploy
+[debug] CLI Version:  3.4.0
+[debug] Platform:     darwin
+[debug] Node Version: v7.6.0
+[debug] Time:         Thu Mar 09 2017 03:36:48 GMT+0800 (CST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/cDsyQjmcSDwvioqf-ZaNnAcLC6SNca9UJNg7Eymhsfc',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu Mar 09 2017 03:36:48 GMT+0800 (CST)
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.6.0/bin/node /usr/local/bin/firebase deploy
+[debug] CLI Version:  3.4.0
+[debug] Platform:     darwin
+[debug] Node Version: v7.6.0
+[debug] Time:         Thu Mar 09 2017 03:38:05 GMT+0800 (CST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/cDsyQjmcSDwvioqf-ZaNnAcLC6SNca9UJNg7Eymhsfc',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu Mar 09 2017 03:38:05 GMT+0800 (CST)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/zhouyufu-9670b  
+ Thu Mar 09 2017 03:38:07 GMT+0800 (CST)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/zhouyufu-9670b/tokens  
+ Thu Mar 09 2017 03:38:10 GMT+0800 (CST)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'zhouyufu-9670b'...
+[info] 
+[info] i  deploying database, hosting
+[info] ✔  database: rules ready to deploy.
+[info] i  hosting: preparing dist/client directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/zhouyufu-9670b/uploads/-KejQSBfT7XCY2BHSa8v?fileCount=55&message=  
+ Thu Mar 09 2017 03:38:15 GMT+0800 (CST)
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.6.0/bin/node /usr/local/bin/firebase deploy
+[debug] CLI Version:  3.4.0
+[debug] Platform:     darwin
+[debug] Node Version: v7.6.0
+[debug] Time:         Thu Mar 09 2017 03:39:26 GMT+0800 (CST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/zhouyufu-9670b  
+ Thu Mar 09 2017 03:39:26 GMT+0800 (CST)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/zhouyufu-9670b/tokens  
+ Thu Mar 09 2017 03:39:28 GMT+0800 (CST)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'zhouyufu-9670b'...
+[info] 
+[info] i  deploying database, hosting
+[info] ✔  database: rules ready to deploy.
+[info] i  hosting: preparing dist/client directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/zhouyufu-9670b/uploads/-KejQkaWrktRN_i36PKQ?fileCount=55&message=  
+ Thu Mar 09 2017 03:39:35 GMT+0800 (CST)
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.6.0/bin/node /usr/local/bin/firebase deploy
+[debug] CLI Version:  3.4.0
+[debug] Platform:     darwin
+[debug] Node Version: v7.6.0
+[debug] Time:         Thu Mar 09 2017 03:40:35 GMT+0800 (CST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/zhouyufu-9670b  
+ Thu Mar 09 2017 03:40:35 GMT+0800 (CST)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/zhouyufu-9670b/tokens  
+ Thu Mar 09 2017 03:40:37 GMT+0800 (CST)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'zhouyufu-9670b'...
+[info] 
+[info] i  deploying database, hosting
+[info] ✔  database: rules ready to deploy.
+[info] i  hosting: preparing dist/client directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/zhouyufu-9670b/uploads/-KejR08E8zGKbx6rwUwD?fileCount=55&message=  
+ Thu Mar 09 2017 03:40:43 GMT+0800 (CST)
+[debug] Error: connect EHOSTUNREACH 23.251.151.130:443 - Local (192.168.1.103:61909)
+    at Object.exports._errnoException (util.js:1028:11)
+    at exports._exceptionWithHostPort (util.js:1051:20)
+    at connect (net.js:884:16)
+    at emitLookup (net.js:1013:7)
+    at GetAddrInfoReqWrap.asyncCallback [as callback] (dns.js:62:16)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:81:10)
+[error] 
+[error] Error: Server Error. connect EHOSTUNREACH 23.251.151.130:443 - Local (192.168.1.103:61909)
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.6.0/bin/node /usr/local/bin/firebase deploy
+[debug] CLI Version:  3.4.0
+[debug] Platform:     darwin
+[debug] Node Version: v7.6.0
+[debug] Time:         Thu Mar 09 2017 03:40:54 GMT+0800 (CST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/zhouyufu-9670b  
+ Thu Mar 09 2017 03:40:54 GMT+0800 (CST)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/zhouyufu-9670b/tokens  
+ Thu Mar 09 2017 03:40:57 GMT+0800 (CST)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'zhouyufu-9670b'...
+[info] 
+[info] i  deploying database, hosting
+[info] ✔  database: rules ready to deploy.
+[info] i  hosting: preparing dist/client directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/zhouyufu-9670b/uploads/-KejR4tsGpkHIEtt81yo?fileCount=55&message=  
+ Thu Mar 09 2017 03:41:02 GMT+0800 (CST)
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/7.6.0/bin/node /usr/local/bin/firebase deploy
+[debug] CLI Version:  3.4.0
+[debug] Platform:     darwin
+[debug] Node Version: v7.6.0
+[debug] Time:         Thu Mar 09 2017 03:42:27 GMT+0800 (CST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/zhouyufu-9670b  
+ Thu Mar 09 2017 03:42:27 GMT+0800 (CST)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/zhouyufu-9670b/tokens  
+ Thu Mar 09 2017 03:42:29 GMT+0800 (CST)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'zhouyufu-9670b'...
+[info] 
+[info] i  deploying database, hosting
+[info] ✔  database: rules ready to deploy.
+[info] i  hosting: preparing dist/client directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/zhouyufu-9670b/uploads/-KejRRfDPSxJRNhKPw2M?fileCount=55&message=  
+ Thu Mar 09 2017 03:42:35 GMT+0800 (CST)

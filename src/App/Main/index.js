@@ -81,6 +81,13 @@ export default ()=>(
 				<AsyncRoute exact path='/' render={import('./Home')} />
 				<AsyncRoute path='/about' render={import('./About')} />
 				<AsyncRoute path='/join' render={import('./Join')} />
+				<AsyncRoute path='/strength' render={import('./Strength')} />
+				<AsyncRoute path='/foods' render={import('./Foods')} />
+				<AsyncRoute path='/news' render={import('./News')} />
+				<AsyncRoute path='/products' render={import('./Products')} />
+				<AsyncRoute path='/skills' render={import('./Skills')} />
+				<AsyncRoute path='/shops' render={import('./Shops')} />
+				<AsyncRoute path='/contact' render={import('./Contact')} />
 			</Switch>
 		</div>
 		<Links />

@@ -3,26 +3,25 @@ import Carouse from 'Carouse'
 import MenuBox from 'MenuBox'
 import Titlebar from 'Titlebar'
 
-const Story=()=>(
-	<div>
-		<Titlebar title="品牌故事" info="Brand story" />
-	</div>
-)
-const Honor=()=>(
-	<div>
-		233
-	</div>
-)
-const Power=()=>(
-	<div>
-		233
-	</div>
-)
-
 const data=[
-	{to:'story',text:'品牌故事',component:Story},
-	{to:'honor',text:'品牌荣誉',component:Honor},
-	{to:'power',text:'品牌实力',component:Power},
+	{to:'process',text:'加盟流程',component:()=>(
+		<div>
+			<Titlebar title="加盟流程" info="Process for join" />
+			<img src={require('./a1.jpg')} />
+		</div>
+	)},
+	{to:'support',text:'加盟支持',component:()=>(
+		<div>
+			<Titlebar title="加盟支持" info="Support for join" />
+			<img src={require('./a2.jpg')} />
+		</div>
+	)},
+	{to:'analysis',text:'投资分析',component:()=>(
+		<div>
+			<Titlebar title="投资分析" info="Invest analysis" />
+			<img src={require('./a3.jpg')} />
+		</div>
+	)},
 ]
 
 export default ({match})=>(
