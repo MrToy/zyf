@@ -11,8 +11,8 @@ export default ()=>(
 	<Provider store={store}>
 		<MuiThemeProvider>
 			<Switch>
-				<AsyncRoute exact path='/' render={import('./Main')} />
 				<AsyncRoute path='/admin' render={import('./Admin')} />
+				<AsyncRoute path='/' render={import('./Main')} />
 			</Switch>
 		</MuiThemeProvider>
 	</Provider>

@@ -78,7 +78,8 @@ export default ({match})=>(
 		<NavBar />
 		<div className={style.content}>
 			<Switch>
-				<AsyncRoute exact path={match.url} render={import('./Home')} />
+				<AsyncRoute exact path='/' render={import('./Home')} />
+				<AsyncRoute path='/about' render={import('./About')} />
 			</Switch>
 		</div>
 		<Links />
