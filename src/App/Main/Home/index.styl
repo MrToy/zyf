@@ -1,0 +1,37 @@
+.carouse
+	position: relative;height: 22vw;min-height: 280px;overflow: hidden
+	.item
+		position: absolute;z-index: 1;opacity: 0;transition: all .5s ease;width: 100vw;height: 22vw;min-width: 1300px;min-height: 280px;
+		&.active
+			z-index:3;opacity:1
+	.dots
+		z-index:10;position: absolute;bottom: 20px;right: 50px;
+		.dot
+			float: left;margin-right: 10px;cursor: pointer;width: 16px;height: 16px;overflow: hidden;border-radius: 8px;background: rgba(0,0,0,0.5);transition: all .1s ease
+			&.active
+				background: #327ff1
+.infos
+	background: #ffa200;
+	.center
+		width: 1300px;margin: 0 auto;padding-top: 5px
+		&:after
+			content: ".";display: block;height: 0;visibility: hidden;clear: both
+	img
+		vertical-align: bottom;float: left
+	p
+		float: left;margin: 20px 0 0 20px;line-height: 2;margin: 0;
+	video
+		margin: 40px 0 0 20px;width: 407px;height: 271px;
+.news
+	height: 701px;background: url(./p6.png) no-repeat 50%;
+	.center
+		width: 1300px;margin: 0 auto;
+		&:after
+			content: ".";display: block;height: 0;visibility: hidden;clear: both
+	.panel
+		width: 530px;height: 490px;float: left;margin: 60px 0 0 80px
+	.img
+		margin: 60px 0 0 60px;float: left
+	.bottom
+		text-align: center;margin-top: 50px;
+		

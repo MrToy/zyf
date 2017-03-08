@@ -1,5 +1,5 @@
 import {createStore,combineReducers} from 'redux'
-import Store from 'store'
+import store from 'store'
 
 const config=(state={key:0},action)=>{
 	switch(action.type){
@@ -21,10 +21,10 @@ const user=(state=null,action)=>{
 	}
 }
 
-const store = createStore(combineReducers({user,config}),Store.get("cache"))
+const Store = createStore(combineReducers({user,config}),store.get("cache"))
 
-store.subscribe(()=>{
-	Store.set("cache",store.getState())
+Store.subscribe(()=>{
+	store.set("cache",store.getState())
 })
 
-export default store
+export default Store

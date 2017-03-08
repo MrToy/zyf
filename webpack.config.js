@@ -12,6 +12,9 @@ var common={
 		filename: "assets/[name].[hash:6].js",
 		publicPath: '/'
 	},
+	resolve: {
+		modules:[path.join(__dirname, "src"),"node_modules"]
+	},
 	module: {
 		rules:[
 			{

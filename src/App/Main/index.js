@@ -1,9 +1,8 @@
 import React from 'react'
 //import {connect} from 'react-redux'
 import {Link,Switch} from 'react-router-dom'
-import AsyncRoute from '../../AsyncRoute'
+import AsyncRoute from 'AsyncRoute'
 import style from './index.styl'
-
 
 const Header=()=>(
 	<div className={style.header}>
@@ -71,6 +70,7 @@ const Footer=()=>(
 		</div>
 	</div>
 )
+
 
 export default ({match})=>(
 	<div>
