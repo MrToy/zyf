@@ -72,8 +72,9 @@ var common={
 				options:{limit:8912,name:"assets/[name].[hash:6].[ext]"}
 			},
 			{
-				test: /\.(mp4|ogg|svg)$/,
-				loader: 'file-loader'
+				test: /\.(mp4|ogg|svg|htm)$/,
+				loader: 'file-loader',
+				options:{name:"assets/[name].[hash:6].[ext]"}
 			}
 		]
 	},

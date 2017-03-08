@@ -28,7 +28,7 @@ const data=[
 				网 址： http://www.zhouyufu.com<br/>
 				Email :zyf62212@163.com<br/>
 			</p>
-			<iframe src={require('file-loader!./map.html')+'?center=106.525276%2C29.520353&zoom=19&width=558&height=360&markers=106.525276%2C29.520353&markerStyles=l%2CA'} frameBorder="0" style={{width:560,height:362}}></iframe>
+			<iframe src={require('./map.htm')+'?center=106.525276%2C29.520353&zoom=19&width=558&height=360&markers=106.525276%2C29.520353&markerStyles=l%2CA'} frameBorder="0" style={{width:560,height:362}}></iframe>
 		</div>
 	)},
 ]
