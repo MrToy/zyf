@@ -1,5 +1,6 @@
 import {createStore,combineReducers} from 'redux'
 import store from 'store'
+import {reducer as notificationsReducer} from 'reapop'
 
 const config=(state={key:0},action)=>{
 	switch(action.type){
@@ -21,10 +22,14 @@ const user=(state=null,action)=>{
 	}
 }
 
-const Store = createStore(combineReducers({user,config}),store.get("cache"))
+const Store = createStore(combineReducers({
+	user,
+	config,
+	notifications:notificationsReducer()
+}),store.get("cache"))
 
 Store.subscribe(()=>{
-	store.set("cache",store.getState())
+	store.set("cache",Store.getState())
 })
 
 export default Store

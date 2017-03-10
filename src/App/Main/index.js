@@ -71,7 +71,6 @@ const Footer=()=>(
 	</div>
 )
 
-
 export default ()=>(
 	<div>
 		<Header />
