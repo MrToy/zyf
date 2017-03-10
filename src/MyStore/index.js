@@ -1,7 +1,5 @@
 import {createStore,combineReducers} from 'redux'
 import store from 'store'
-import {reducer as notificationsReducer} from 'reapop'
-
 const config=(state={key:0},action)=>{
 	switch(action.type){
 		case 'config/change':
@@ -24,8 +22,7 @@ const user=(state=null,action)=>{
 
 const Store = createStore(combineReducers({
 	user,
-	config,
-	notifications:notificationsReducer()
+	config
 }),store.get("cache"))
 
 Store.subscribe(()=>{

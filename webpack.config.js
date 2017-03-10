@@ -52,11 +52,11 @@ var common={
 					}
 				}]
 			},
-			{ test: /\.css$/,include:"./node_modules",use:ExtractTextPlugin.extract({
+			{ test: /\.css$/,include:/node_modules/,use:ExtractTextPlugin.extract({
 				fallback: 'style-loader',
 				use:"css-loader"
 			})},
-			{ test: /\.css$/,exclude:"./node_modules",use:ExtractTextPlugin.extract({
+			{ test: /\.css$/,exclude:/node_modules/,use:ExtractTextPlugin.extract({
 				fallback: 'style-loader',
 				use:[cssLoader,postcssLoader]
 			})},

@@ -5,8 +5,6 @@ import style from './index.styl'
 import {Link,Switch,Route,Redirect} from 'react-router-dom'
 import AsyncRoute from 'AsyncRoute'
 import cx from 'classnames'
-import NotificationsSystem from 'reapop'
-import reapopTheme from 'reapop-theme-wybo'
 //import {connect} from 'react-redux'
 // import * as configActions from '../store/config'
 // import * as userActions from '../store/user'
@@ -39,6 +37,5 @@ export default ({match})=>(
 				</Switch>
 			</div>
 		</div>
-		<NotificationsSystem theme={reapopTheme} />
 	</div>
 )

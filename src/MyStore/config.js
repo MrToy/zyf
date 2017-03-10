@@ -1,6 +1,5 @@
 import db from './db'
 import store from './'
-import {addNotification} from 'reapop'
 //import firebase from 'firebase'
 
 db.ref('config').on('value',res=>{
@@ -16,8 +15,4 @@ export const change=()=>{
 	// 	photoURL: "https://example.com/jane-q-user/profile.jpg"
 	// })
 	//firebase.auth().createUserWithEmailAndPassword("1659808224@qq.com","123456o")
-}
-
-export function notify(args){
-	addNotification(args)(store.dispatch)
 }
