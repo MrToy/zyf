@@ -7,12 +7,16 @@ db.ref('config').on('value',res=>{
 })
 
 
-export const change=()=>{
+//export const change=()=>{
 	//db.ref('users').set({[user.uid]:{admin:true}})
-	db.ref('config/key').set(Math.random())
+	
 	// firebase.auth().currentUser.updateProfile({
 	// 	displayName: "toy",
 	// 	photoURL: "https://example.com/jane-q-user/profile.jpg"
 	// })
 	//firebase.auth().createUserWithEmailAndPassword("1659808224@qq.com","123456o")
+//}
+
+export function set(args){
+	db.ref('config').set(args)
 }
