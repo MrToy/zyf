@@ -93,7 +93,8 @@ const prodConfig=[
 		},
 		plugins:common.plugins.concat([
 			new HtmlWebpackPlugin({
-				template: 'src/index.html'
+				template: 'src/index.html',
+				favicon:'src/favicon.ico'
 			}),
 			new webpack.optimize.CommonsChunkPlugin({
 				names:["react"]

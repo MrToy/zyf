@@ -3,6 +3,7 @@ import Carouse from 'Carouse'
 import style from './index.styl'
 import {Link,Switch,Route} from 'react-router-dom'
 
+
 const List=({match})=>(
 	<div>
 		<img src={require('./a1.png')} />
@@ -34,6 +35,7 @@ const ProductsImages=[
 	require('./w4.png'),
 	require('./w5.png'),
 ]
+
 
 const Products=({match})=>(
 	<div className={style.imgs}>
