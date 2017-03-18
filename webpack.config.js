@@ -13,7 +13,9 @@ var common={
 		publicPath: '/'
 	},
 	resolve: {
-		modules:[path.join(__dirname, "src"),"node_modules"]
+		alias: {
+			lib:path.join(__dirname, "src")
+		}
 	},
 	module: {
 		rules:[

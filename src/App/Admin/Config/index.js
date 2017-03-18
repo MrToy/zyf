@@ -1,7 +1,7 @@
 import React from 'react'
 import {TextField,Toolbar,RaisedButton} from 'material-ui'
 import style from '../index.styl'
-import {set as setConfig} from 'MyStore/config'
+import {set as setConfig} from 'lib/store/config'
 import {connect} from 'react-redux'
 
 

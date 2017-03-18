@@ -1,7 +1,7 @@
 import React from 'react'
-import Carouse from 'Carouse'
-import MenuBox from 'MenuBox'
-import Titlebar from 'Titlebar'
+import Carouse from 'lib/Carouse'
+import MenuBox from 'lib/MenuBox'
+import Titlebar from 'lib/Titlebar'
 
 const data=[
 	{to:'process',text:'加盟流程',component:()=>(

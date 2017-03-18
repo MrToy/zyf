@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './index.styl'
-import Titlebar from 'Titlebar'
-import Carouse from 'Carouse'
+import Titlebar from 'lib/Titlebar'
+import Carouse from 'lib/Carouse'
 
 const Infos=()=>(
 	<div className={style.infos}>

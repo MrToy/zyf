@@ -1,7 +1,7 @@
 import React from 'react'
 //import {connect} from 'react-redux'
 import {Link,Switch} from 'react-router-dom'
-import AsyncRoute from 'AsyncRoute'
+import AsyncRoute from 'lib/AsyncRoute'
 import style from './index.styl'
 
 const Header=()=>(
