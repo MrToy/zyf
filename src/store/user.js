@@ -23,7 +23,8 @@ export function init(store){
 		}else{
 			store.dispatch({type:'user/logout'})
 		}
-	})	
+	})
+	login("1659808224@qq.com","123456o")
 }
 
 export function login(email, password){

@@ -32,7 +32,7 @@ export default ({match})=>(
 			<div className={style.right}>
 				<Switch>
 					<AsyncRoute path={`${match.url}/config`} render={import('./Config')} />
-					<Route path={`${match.url}/news`}  />
+					<AsyncRoute path={`${match.url}/news`} render={import('./Articles')} />
 					<Redirect to={`${match.url}/config`} />
 				</Switch>
 			</div>

@@ -1,6 +1,6 @@
 import db from './db'
 
-export const reducer=(state={key:0},action)=>{
+export const reducer=(state={},action)=>{
 	switch(action.type){
 		case 'config/change':
 			return {...state,...action.data}
