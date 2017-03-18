@@ -7,6 +7,6 @@ import {connect} from 'react-redux'
 
 export default connect(({articles})=>({data:articles}))(({data})=>(
 	<div>
-		<RaisedButton label="测试" />
+		<RaisedButton label="添加" onClick={()=>articles.add({title:"test",date:new Date()})} />
 	</div>
 ))

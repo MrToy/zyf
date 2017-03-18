@@ -9,6 +9,11 @@
         ".read":"auth != null && auth.uid == $uid",
         ".write":false
       }
+    },
+    "articles":{
+      ".read": true,
+      ".write": "root.child('users/'+auth.uid+'/admin').val()==true",
+      ".indexOn":["date"]
     }
   }
 }

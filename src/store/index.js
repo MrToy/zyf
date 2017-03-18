@@ -3,11 +3,13 @@ import thunk from 'redux-thunk'
 import st from 'store'
 import * as config from './config'
 import * as user from './user'
+import * as articles from './articles'
 
 
 const store = createStore(combineReducers({
 	user:user.reducer,
 	config:config.reducer,
+	articles:articles.reducer
 },applyMiddleware(thunk)),st.get("cache"))
 
 config.init(store)
