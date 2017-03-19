@@ -50,7 +50,7 @@ var common={
 					options:{
 						babelrc: false,
 						"presets": ["es2015","stage-0","react"],
-						"plugins": ["transform-decorators-legacy"]
+						"plugins": ["transform-runtime","transform-decorators-legacy"]
 					}
 				}]
 			},
