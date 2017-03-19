@@ -13,7 +13,7 @@
     "articles":{
       ".read": true,
       ".write": "root.child('users/'+auth.uid+'/admin').val()==true",
-      ".indexOn":["date"]
+      ".indexOn":"date"
     }
   }
 }

@@ -16,6 +16,6 @@ export function init(store){
 }
 
 
-export function set(args){
-	db.ref('config').set(args)
+export function set(key,value){
+	db.ref('config/'+key).set(value)
 }

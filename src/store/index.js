@@ -10,7 +10,7 @@ const store = createStore(combineReducers({
 	user:user.reducer,
 	config:config.reducer,
 	articles:articles.reducer
-},applyMiddleware(thunk)),st.get("cache"))
+}),st.get("cache"),applyMiddleware(thunk))
 
 config.init(store)
 user.init(store)
