@@ -1,6 +1,6 @@
 import db from './db'
 
-export const reducer=(state={tops:[],lists:[],index:1},action)=>{
+export const reducer=(state={tops:[],lists:[]},action)=>{
 	switch(action.type){
 		case 'articles/tops':
 			return {...state,tops:action.data}
@@ -24,7 +24,7 @@ export const getLists=()=>dispatch=>{
 }
 
 export function add(article){
-	article.date=Date.now()
+	article.date=new Date()
 	var key=db.ref('articles').push().key
 	db.ref('articles').update({[key]:article})
 }

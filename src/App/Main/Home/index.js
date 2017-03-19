@@ -2,6 +2,11 @@ import React from 'react'
 import style from './index.styl'
 import Titlebar from 'lib/Titlebar'
 import Carouse from 'lib/Carouse'
+import * as articles from 'lib/store/articles'
+import {connect} from 'react-redux'
+import moment from 'moment'
+
+moment.locale('zh-cn')
 
 const Infos=()=>(
 	<div className={style.infos}>
@@ -24,19 +29,47 @@ const Infos=()=>(
 	</div>
 )
 
-const News=()=>(
-	<div className={style.news}>
-		<div className={style.center}>
-			<div className={style.panel}>
-				<Titlebar title="最新动态" info="COMPANY NEWS" link="/" />
+@connect(({articles})=>({data:articles.tops}))
+class News extends React.Component{
+	componentDidMount(){
+		this.props.dispatch(articles.getTops())
+	}
+	render(){
+		var data=this.props.data
+		return (
+			<div className={style.news}>
+				<div className={style.center}>
+					<div className={style.panel}>
+						<Titlebar title="最新动态" info="COMPANY NEWS" link="/news" />
+						{data&&Object.keys(data).reverse().map(id=>(
+							<p key={id}>
+								{data[id].title}
+								<span className={style.date}>{moment(data[id].date).fromNow()}</span>
+							</p>
+						))}
+					</div>
+					<img className={style.img} src={require('./skill.jpg')} />
+				</div>
+				<div className={style.bottom}>
+					<img src={require('./p8.png')} />
+				</div>
 			</div>
-			<img className={style.img} src={require('./skill.jpg')} />
-		</div>
-		<div className={style.bottom}>
-			<img src={require('./p8.png')} />
-		</div>
-	</div>
-)
+		)
+	}
+}
+// const News=()=>(
+// 	<div className={style.news}>
+// 		<div className={style.center}>
+// 			<div className={style.panel}>
+// 				<Titlebar title="最新动态" info="COMPANY NEWS" link="/" />
+// 			</div>
+// 			<img className={style.img} src={require('./skill.jpg')} />
+// 		</div>
+// 		<div className={style.bottom}>
+// 			<img src={require('./p8.png')} />
+// 		</div>
+// 	</div>
+// )
 
 export default ()=>(
 	<div>

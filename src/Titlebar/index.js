@@ -1,5 +1,6 @@
 import React from 'react'
 import style from './index.styl'
+import {Link} from 'react-router-dom'
 
 export default (props)=>(
 	<div className={style.box}>
@@ -8,6 +9,6 @@ export default (props)=>(
 			<div className={style.title}>{props.title}</div>
 			<div className={style.info}>{props.info}</div>
 		</div>
-		{props.link&&<a href={props.link}>more</a>}
+		{props.link&&<Link to={props.link}>more</Link>}
 	</div>
 )
