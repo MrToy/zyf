@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {AppBar,IconButton} from 'material-ui'
-import {ActionHome,ActionBuild,AvFiberNew} from 'material-ui/svg-icons'
+import {ActionHome,ActionBuild,AvFiberNew,CommunicationTextsms} from 'material-ui/svg-icons'
 import style from './index.styl'
 import {Link,Switch,Route,Redirect} from 'react-router-dom'
 import AsyncRoute from 'lib/AsyncRoute'
@@ -28,6 +28,7 @@ export default ({match})=>(
 			<div className={style.left}>
 				<MenuLink to={`${match.url}/config`} Icon={ActionBuild}>常规设置</MenuLink>
 				<MenuLink to={`${match.url}/news`} Icon={AvFiberNew}>新闻管理</MenuLink>
+				<MenuLink to={`${match.url}/message`} Icon={CommunicationTextsms}>留言板</MenuLink>
 			</div>
 			<div className={style.right}>
 				<Switch>

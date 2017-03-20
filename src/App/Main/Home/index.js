@@ -24,7 +24,7 @@ const Infos=()=>(
 				为火锅文化注入全新元素，在重庆餐饮界掀起一场双味鱼风潮，<br/>
 				成就了饮食界里另一段美味传奇。<br/>
 			</p>
-			<video src="http://toy-static.oss-cn-shanghai.aliyuncs.com/mv.mp4" controls></video>
+			<video src="//toy-static.oss-cn-shanghai.aliyuncs.com/mv.mp4" controls></video>
 		</div>
 	</div>
 )
