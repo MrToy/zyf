@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link,Switch} from 'react-router-dom'
-import AsyncRoute from 'lib/AsyncRoute'
+import {Link,Switch,Route} from 'react-router-dom'
+import getAsync from 'lib/Async'
 import style from './index.styl'
 
 const Header=()=>(
@@ -106,16 +106,17 @@ export default ()=>(
 		<NavBar />
 		<div className={style.content}>
 			<Switch>
-				<AsyncRoute exact path='/' render={import('./Home')} />
-				<AsyncRoute path='/about' render={import('./About')} />
-				<AsyncRoute path='/join' render={import('./Join')} />
-				<AsyncRoute path='/strength' render={import('./Strength')} />
-				<AsyncRoute path='/foods' render={import('./Foods')} />
-				<AsyncRoute path='/news' render={import('./News')} />
-				<AsyncRoute path='/products' render={import('./Products')} />
-				<AsyncRoute path='/skills' render={import('./Skills')} />
-				<AsyncRoute path='/shops' render={import('./Shops')} />
-				<AsyncRoute path='/contact' render={import('./Contact')} />
+				<Route exact path='/' component={getAsync(()=>import('./Home'))} />
+				<Route path='/about' component={getAsync(()=>import('./About'))} />
+				<Route path='/join' component={getAsync(()=>import('./Join'))} />
+				<Route path='/strength' component={getAsync(()=>import('./Strength'))} />
+				<Route path='/foods' component={getAsync(()=>import('./Foods'))} />
+				<Route path='/news' component={getAsync(()=>import('./News'))} />
+				<Route path='/products' component={getAsync(()=>import('./Products'))} />
+				<Route path='/skills' component={getAsync(()=>import('./Skills'))} />
+				<Route path='/shops' component={getAsync(()=>import('./Shops'))} />
+				<Route path='/contact' component={getAsync(()=>import('./Contact'))} />
+				<Route component={require('lib/NotFound').default} />
 			</Switch>
 		</div>
 		<Links />
