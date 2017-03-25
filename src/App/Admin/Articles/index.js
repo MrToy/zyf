@@ -7,13 +7,13 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 import moment from 'moment'
 import {NavigationArrowBack,NavigationArrowForward} from 'material-ui/svg-icons'
 
-window.articles=articles
 
-moment.locale('zh-cn')
+
 
 @connect(({articles})=>({data:articles.lists}))
 export default class extends React.Component{
 	componentDidMount(){
+		moment.locale('zh-cn')
 		this.props.dispatch(articles.getLists())
 	}
 	render(){

@@ -1,15 +1,17 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link,Switch} from 'react-router-dom'
-import AsyncRoute from 'lib/AsyncRoute'
+import {Link,Switch,Route} from 'react-router-dom'
 import style from './index.styl'
 
-const Header=()=>(
+const Header=connect(({config})=>({config}))(({config})=>(
 	<div className={style.header}>
 		<img className={style.logo} src={require("./logo.png")} />
-		<img className={style.text} src={require("./p33.png")} />
+		<div className={style.text} title="tel">
+			<img src={require("./p33.png")} />
+			<span>{config.tel1} {config.tel2}</span>
+		</div>
 	</div>
-)
+))
 
 const NavBar=()=>(
 	<div className={style.nav}>
@@ -106,16 +108,17 @@ export default ()=>(
 		<NavBar />
 		<div className={style.content}>
 			<Switch>
-				<AsyncRoute exact path='/' render={import('./Home')} />
-				<AsyncRoute path='/about' render={import('./About')} />
-				<AsyncRoute path='/join' render={import('./Join')} />
-				<AsyncRoute path='/strength' render={import('./Strength')} />
-				<AsyncRoute path='/foods' render={import('./Foods')} />
-				<AsyncRoute path='/news' render={import('./News')} />
-				<AsyncRoute path='/products' render={import('./Products')} />
-				<AsyncRoute path='/skills' render={import('./Skills')} />
-				<AsyncRoute path='/shops' render={import('./Shops')} />
-				<AsyncRoute path='/contact' render={import('./Contact')} />
+				<Route exact path='/' component={require('ssr-loader!./Home')} />
+				<Route path='/about' component={require('ssr-loader!./About')} />
+				<Route path='/join' component={require('ssr-loader!./Join')} />
+				<Route path='/strength' component={require('ssr-loader!./Strength')} />
+				<Route path='/foods' component={require('ssr-loader!./Foods')} />
+				<Route path='/news' component={require('ssr-loader!./News')} />
+				<Route path='/products' component={require('ssr-loader!./Products')} />
+				<Route path='/skills' component={require('ssr-loader!./Skills')} />
+				<Route path='/shops' component={require('ssr-loader!./Shops')} />
+				<Route path='/contact' component={require('ssr-loader!./Contact')} />
+				<Route component={require('lib/NotFound').default} />
 			</Switch>
 		</div>
 		<Links />

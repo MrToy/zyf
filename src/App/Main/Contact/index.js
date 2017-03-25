@@ -3,16 +3,17 @@ import Carouse from 'lib/Carouse'
 import MenuBox from 'lib/MenuBox'
 import Titlebar from 'lib/Titlebar'
 import style from './index.styl'
+import {connect} from 'react-redux'
 
 const data=[
-	{to:'us',text:'联系我们',component:()=>(
+	{to:'us',text:'联系我们',component:connect(({config})=>({config}))(({config})=>(
 		<div className={style.box}>
 			<Titlebar title="联系我们" info="Contact us" />
 			<h4>重庆周渔府餐饮文化有限公司</h4>
 			<p>
 				公司地址：重庆市九龙坡区谢家湾正街55号华润广场B座1908室（万象城旁）<br/>
-				加盟热线：023-68824366 68825366<br/>
-				总 机：023-68823366<br/>
+				加盟热线：{config.tel1}<br/>
+				总 机：{config.tel2}<br/>
 				分 机：<br/>
 				<span className={style.indent}>
 					前 台：701、702<br/>
@@ -30,7 +31,7 @@ const data=[
 			</p>
 			<iframe src={require('./map.htm')+'?center=106.525276%2C29.520353&zoom=19&width=558&height=360&markers=106.525276%2C29.520353&markerStyles=l%2CA'} frameBorder="0" style={{width:560,height:362}}></iframe>
 		</div>
-	)},
+	))},
 ]
 
 export default ({match})=>(

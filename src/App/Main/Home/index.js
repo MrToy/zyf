@@ -6,7 +6,6 @@ import * as articles from 'lib/store/articles'
 import {connect} from 'react-redux'
 import moment from 'moment'
 
-moment.locale('zh-cn')
 
 const Infos=()=>(
 	<div className={style.infos}>
@@ -33,6 +32,7 @@ const Infos=()=>(
 class News extends React.Component{
 	componentDidMount(){
 		this.props.dispatch(articles.getTops())
+		moment.locale('zh-cn')
 	}
 	render(){
 		var data=this.props.data
