@@ -3,7 +3,6 @@ import {AppBar,IconButton} from 'material-ui'
 import {ActionHome,ActionBuild,AvFiberNew,CommunicationTextsms} from 'material-ui/svg-icons'
 import style from './index.styl'
 import {Link,Switch,Route,Redirect} from 'react-router-dom'
-import Async from 'lib/Async'
 import cx from 'classnames'
 //import {connect} from 'react-redux'
 // import * as configActions from '../store/config'
@@ -32,8 +31,8 @@ export default ({match})=>(
 			</div>
 			<div className={style.right}>
 				<Switch>
-					<Route path={`${match.url}/config`} component={require('./Config').default} />
-					<Route path={`${match.url}/news`} component={require('./Articles').default} />
+					<Route path={`${match.url}/config`} component={require('ssr-loader!./Config')} />
+					<Route path={`${match.url}/news`} component={require('ssr-loader!./Articles')} />
 					<Redirect to={`${match.url}/config`} />
 				</Switch>
 			</div>

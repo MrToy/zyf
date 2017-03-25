@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link,Switch,Route} from 'react-router-dom'
-import getAsync from 'lib/Async'
 import style from './index.styl'
 
 const Header=()=>(
@@ -106,16 +105,16 @@ export default ()=>(
 		<NavBar />
 		<div className={style.content}>
 			<Switch>
-				<Route exact path='/' component={getAsync(()=>import('./Home'))} />
-				<Route path='/about' component={getAsync(()=>import('./About'))} />
-				<Route path='/join' component={getAsync(()=>import('./Join'))} />
-				<Route path='/strength' component={getAsync(()=>import('./Strength'))} />
-				<Route path='/foods' component={getAsync(()=>import('./Foods'))} />
-				<Route path='/news' component={getAsync(()=>import('./News'))} />
-				<Route path='/products' component={getAsync(()=>import('./Products'))} />
-				<Route path='/skills' component={getAsync(()=>import('./Skills'))} />
-				<Route path='/shops' component={getAsync(()=>import('./Shops'))} />
-				<Route path='/contact' component={getAsync(()=>import('./Contact'))} />
+				<Route exact path='/' component={require('ssr-loader!./Home')} />
+				<Route path='/about' component={require('ssr-loader!./About')} />
+				<Route path='/join' component={require('ssr-loader!./Join')} />
+				<Route path='/strength' component={require('ssr-loader!./Strength')} />
+				<Route path='/foods' component={require('ssr-loader!./Foods')} />
+				<Route path='/news' component={require('ssr-loader!./News')} />
+				<Route path='/products' component={require('ssr-loader!./Products')} />
+				<Route path='/skills' component={require('ssr-loader!./Skills')} />
+				<Route path='/shops' component={require('ssr-loader!./Shops')} />
+				<Route path='/contact' component={require('ssr-loader!./Contact')} />
 				<Route component={require('lib/NotFound').default} />
 			</Switch>
 		</div>

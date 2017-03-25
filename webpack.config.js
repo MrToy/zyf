@@ -96,7 +96,8 @@ const prodConfig=[
 		plugins:common.plugins.concat([
 			new HtmlWebpackPlugin({
 				template: 'src/index.html',
-				favicon:'src/favicon.ico'
+				favicon:'src/favicon.ico',
+				minify:{collapseWhitespace: true}
 			}),
 			new webpack.optimize.CommonsChunkPlugin({
 				names:["react"]
