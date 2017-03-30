@@ -8,7 +8,7 @@ const Header=connect(({config})=>({config}))(({config})=>(
 		<img className={style.logo} src={require("./logo.png")} />
 		<div className={style.text} title="tel">
 			<img src={require("./p33.png")} />
-			<span>{config.tel1} {config.tel2}</span>
+			<span>{config.tel1}</span>
 		</div>
 	</div>
 ))
