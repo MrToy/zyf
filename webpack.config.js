@@ -8,7 +8,7 @@ var postcssLoader={loader:'postcss-loader',options:{plugins:()=>([require('autop
 var cssLoader={loader:'css-loader',options:{modules:true,importLoaders:1,localIdentName:"[local]-[hash:6]"}}
 var common={
 	output:{
-		path: path.join(__dirname,"dist/client"),
+		path: path.join(__dirname,"dist"),
 		filename: "assets/[name].[hash:6].js",
 		publicPath: '/'
 	},
@@ -113,8 +113,8 @@ const prodConfig=[
 		entry:"./src/server.js",
 		target:"node",
 		output:Object.assign({},common.output,{
-			path:path.join(__dirname,"dist/server"),
-			filename: "index.js",
+			path:path.join(__dirname,"dist"),
+			filename: "server.js",
 			libraryTarget:"commonjs2"
 		}),
 		externals: /^[a-z\-0-9]+$/

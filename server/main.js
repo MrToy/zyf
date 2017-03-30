@@ -4,12 +4,12 @@ import path from 'path'
 import fs from 'fs'
 import bundle from '../dist/server'
 
-var template=fs.readFileSync('./dist/client/index.html').toString()
+var template=fs.readFileSync('./dist/index.html').toString()
 
 
 const app=express()
-app.get('/favicon.ico',express.static('./dist/client'))
-app.get('/assets/*',express.static('./dist/client',{maxAge:30*24*60*1000}))
+app.get('/favicon.ico',express.static('./dist'))
+app.get('/assets/*',express.static('./dist',{maxAge:30*24*60*1000}))
 app.get('*',(req,res)=>{
 	const context = {
 		status:200
