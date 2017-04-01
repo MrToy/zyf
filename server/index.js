@@ -30,9 +30,11 @@ app.use(async ctx=>{
 	var html=renderToString(bundle(ctx.url,res))
 	if(res.url){
 		ctx.redirect(res.url)
-	}else {
-		ctx.body=template.replace("<!-- react-content -->",html)
+	}else if(res.status==404){
+		ctx.status=404
+	}else{
 		ctx.status=res.status
+		ctx.body=template.replace("<!-- react-content -->",html)
 	}
 })
 
