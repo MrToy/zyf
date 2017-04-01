@@ -1,5 +1,5 @@
 import React from 'react'
-import Carouse from 'lib/Carouse'
+import Carouse from '../../../Carouse'
 import style from './index.styl'
 
 

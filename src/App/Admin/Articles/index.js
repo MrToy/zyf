@@ -1,7 +1,7 @@
 import React from 'react'
 import {TextField,Toolbar,RaisedButton} from 'material-ui'
 import style from '../index.styl'
-import * as articles from 'lib/store/articles'
+import * as articles from '../../../store/articles'
 import {connect} from 'react-redux'
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table'
 import moment from 'moment'

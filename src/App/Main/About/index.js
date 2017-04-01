@@ -1,7 +1,7 @@
 import React from 'react'
-import Carouse from 'lib/Carouse'
-import MenuBox from 'lib/MenuBox'
-import Titlebar from 'lib/Titlebar'
+import Carouse from '../../../Carouse'
+import MenuBox from '../../../MenuBox'
+import Titlebar from '../../../Titlebar'
 
 
 const data=[

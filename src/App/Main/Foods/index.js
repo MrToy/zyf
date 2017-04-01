@@ -1,7 +1,7 @@
 import React from 'react'
-import Carouse from 'lib/Carouse'
-import MenuBox from 'lib/MenuBox'
-import Titlebar from 'lib/Titlebar'
+import Carouse from '../../../Carouse'
+import MenuBox from '../../../MenuBox'
+import Titlebar from '../../../Titlebar'
 import style from './index.styl'
 import Dialog from 'material-ui/Dialog'
 
@@ -120,7 +120,7 @@ const foods=[
 		{
 			src:require("./IMG_2283-19_s.jpg"),
 			title:"精品味碟"
-		},			
+		},
 	]
 ]
 

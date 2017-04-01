@@ -1,8 +1,8 @@
 import React from 'react'
 import style from './index.styl'
-import Titlebar from 'lib/Titlebar'
-import Carouse from 'lib/Carouse'
-import * as articles from 'lib/store/articles'
+import Titlebar from '../../../Titlebar'
+import Carouse from '../../../Carouse'
+import * as articles from '../../../store/articles'
 import {connect} from 'react-redux'
 import moment from 'moment'
 
