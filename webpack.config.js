@@ -19,29 +19,6 @@ var common={
 	},
 	module: {
 		rules:[
-			{
-				test: /\.js$/,
-				enforce: "pre",
-				loader: "eslint-loader",
-				exclude: /node_modules/,
-				options:{
-					"parser": "babel-eslint",
-					"plugins": ["react"],
-					"parserOptions": {
-						"sourceType": "module",
-						"ecmaFeatures": {"jsx": true}
-					},
-					"env": {"browser": true,"amd": true,"es6": true,"node": true},
-					"rules": {
-						"no-extra-semi": 1,
-						"no-unused-vars": 1,
-						"no-trailing-spaces": [1, { "skipBlankLines": true }],
-						"no-unreachable": 1,
-						"react/jsx-uses-react": 1,
-						"react/jsx-uses-vars": 1
-					}
-				}
-			},
 			{ 
 				test: /\.js$/, 
 				exclude:/node_modules/,

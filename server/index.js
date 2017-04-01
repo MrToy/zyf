@@ -7,6 +7,7 @@ const mount = require('koa-mount')
 const koaBody = require('koa-body')
 const bundle = require('../dist/server.js').default
 const Router = require('koa-router')
+const cors = require('koa-cors')
 const articles = require('./articles')
 
 
@@ -18,6 +19,7 @@ router.use('/articles',articles.routes(),articles.allowedMethods())
 
 const app = new Koa()
 app.use(logger())
+app.use(cors())
 app.use(mongo({uri: 'mongodb://mongo/zyf'}))
 app.use(koaBody({formidable:{uploadDir:'./upload',keepExtensions:true}}))
 app.use(mount('/assets',serve("./dist/assets",{maxAge:30*24*60*1000})))

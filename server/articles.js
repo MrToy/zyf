@@ -11,15 +11,20 @@ router.get('/:id',async ctx=>{
 })
 
 router.post('/',async ctx=>{
-	await ctx.mongo.collection('articles').insert()
+	var data=ctx.request.body
+	await ctx.mongo.collection('articles').insert(data)
+	ctx.status=201
 })
 
-router.delete('/',async ctx=>{
-	
+router.delete('/:id',async ctx=>{
+	await ctx.mongo.collection('articles').remove({_id:mongo.ObjectId(ctx.params.id)})
+	ctx.status=204
 })
 
-router.post('/:id',async ctx=>{
-	
+router.put('/:id',async ctx=>{
+	var data=ctx.request.body
+	await ctx.mongo.collection('articles').update({_id:mongo.ObjectId(ctx.params.id)},data)
+	ctx.status=204
 })
 
 module.exports=router
