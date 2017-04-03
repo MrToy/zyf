@@ -23,14 +23,17 @@ export default class extends React.Component{
 	componentDidMount(){
 		this.setState(this.props.data)
 	}
-	set(){
-		this.props.dispatch(config.set(this.state))
+	async set(){
+		await config.set(this.state)
+		alert("保存成功")
+		this.props.dispatch(config.get())
 	}
 	render(){
 		var data=this.state
 		return (
 			<div>
 				<TextField floatingLabelText="公司地址" className={style.input} value={data.address||""} onChange={(e,val)=>this.setState({address:val})} /><br />
+				<TextField floatingLabelText="加盟热线" className={style.input} value={data.tel1||""} onChange={(e,val)=>this.setState({tel1:val})} /><br />
 				<TextField floatingLabelText="服务热线" className={style.input} value={data.tel2||""} onChange={(e,val)=>this.setState({tel2:val})} /><br />
 				<TextField floatingLabelText="传真" className={style.input} value={data.fox||""} onChange={(e,val)=>this.setState({fox:val})} /><br />
 				<TextField floatingLabelText="网址" className={style.input} value={data.site||""} onChange={(e,val)=>this.setState({site:val})} /><br />

@@ -9,19 +9,21 @@ export const reducer=(state={},action)=>{
 	}
 }
 
-export const set=data=>dispatch=>{
-	request
-		.put('/api/config/meta')
-		.send(data)
-		.end(()=>{
-			dispatch({type:'config/meta',data})
-		})
+export function set(data){
+	return new Promise(resolve=>{
+		request
+			.put('/api/config/meta')
+			.send(data)
+			.end(resolve)
+	})
 }
 
-export const get=()=>dispatch=>{
-	request
-		.get('/api/config/meta')
-		.end((err,res)=>{
-			dispatch({type:'config/meta',data:res.body})
-		})
+export function get(){
+	return new Promise(resolve=>{
+		request
+			.get('/api/config/meta')
+			.end((err,res)=>{
+				resolve({type:'config/meta',data:res.body})
+			})
+	})
 }
