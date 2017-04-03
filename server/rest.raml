@@ -26,6 +26,13 @@ types:
           title: "233"
   /{id}:
     delete:
+    put:
+      body:
+        application/json:
+          type: object
+          example:
+            title: "233"
+    get:
 /user:
   /login:
     post:
@@ -34,3 +41,12 @@ types:
           type: User
   /register:
     post:
+/config/{name}:
+  get:
+  put:
+    body:
+      application/json:
+        type: object
+        example:
+          name: "周渔府"
+          tel: "1111111"

@@ -12,6 +12,7 @@ const store = createStore(combineReducers({
 	articles:articles.reducer
 }),st.get("cache"),applyMiddleware(thunk))
 
+store.dispatch(config.get())
 
 store.subscribe(()=>{
 	st.set("cache",store.getState())

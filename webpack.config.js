@@ -19,8 +19,8 @@ var common={
 	},
 	module: {
 		rules:[
-			{ 
-				test: /\.js$/, 
+			{
+				test: /\.js$/,
 				exclude:/node_modules/,
 				use:[{
 					loader: "babel-loader",
@@ -107,9 +107,14 @@ const devConfig=Object.assign({},common,{
 	devtool:'eval-source-map',
 	devServer:{
 		hot:true,
-		port:8080,
+		port:8888,
 		contentBase:common.output.path,
-		historyApiFallback: true
+		historyApiFallback: true,
+		proxy:{
+			'/api':{
+				target:'http://localhost:8080'
+			}
+		}
 	},
 	plugins:common.plugins.concat([
 		new webpack.HotModuleReplacementPlugin(),

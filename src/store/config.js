@@ -1,17 +1,27 @@
+import request from 'superagent'
+
 export const reducer=(state={},action)=>{
 	switch(action.type){
-		case 'config/change':
+		case 'config/meta':
 			return {...state,...action.data}
 		default:
 			return state
 	}
 }
 
-export function init(store){
-
+export const set=data=>dispatch=>{
+	request
+		.put('/api/config/meta')
+		.send(data)
+		.end(()=>{
+			dispatch({type:'config/meta',data})
+		})
 }
 
-
-export function set(key,value){
-
+export const get=()=>dispatch=>{
+	request
+		.get('/api/config/meta')
+		.end((err,res)=>{
+			dispatch({type:'config/meta',data:res.body})
+		})
 }
