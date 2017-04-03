@@ -8,14 +8,15 @@ const koaBody = require('koa-body')
 const bundle = require('../dist/server.js').default
 const Router = require('koa-router')
 const cors = require('koa-cors')
-const articles = require('./articles')
-
+const article = require('./article')
+const configs = require('./config')
 
 const template=require('fs').readFileSync('./dist/index.html').toString()
 
 
 const router = new Router()
-router.use('/articles',articles.routes(),articles.allowedMethods())
+router.use('/article',article.routes(),article.allowedMethods())
+router.use('/config',configs.routes(),configs.allowedMethods())
 
 const app = new Koa()
 app.use(logger())

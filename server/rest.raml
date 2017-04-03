@@ -1,29 +1,36 @@
 #%RAML 1.0
 title: web
 baseUri: http://localhost:8080/api
-types: 
+types:
   Article:
     type: object
-    properties: 
+    properties:
       title: string
-  Articles:
-    type: Article[]
-/articles:
+  User:
+    type: object
+    properties:
+      name: string
+      pass: string
+/article:
   get:
-    responses: 
+    responses:
       200:
         body:
           application/json:
-            type: Articles
+            type: Article[]
   post:
-    body: 
+    body:
       application/json:
         type: Article
         example:
           title: "233"
   /{id}:
-    uriParameters: 
-      id:
-        type: string
-        example: 58dd15ea01ceea14493137b0
     delete:
+/user:
+  /login:
+    post:
+      body:
+        application/json:
+          type: User
+  /register:
+    post:
