@@ -3,12 +3,15 @@ import {connect} from 'react-redux'
 import {Link,Switch,Route} from 'react-router-dom'
 import style from './index.styl'
 
-const Header=()=>(
+const Header=connect(({config})=>({config}))(({config})=>(
 	<div className={style.header}>
 		<img className={style.logo} src={require("./logo.png")} />
-		<img className={style.text} src={require("./p33.png")} />
+		<div className={style.text} title="tel">
+			<img src={require("./p33.png")} />
+			<span>{config.tel1}</span>
+		</div>
 	</div>
-)
+))
 
 const NavBar=()=>(
 	<div className={style.nav}>
