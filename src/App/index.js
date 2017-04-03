@@ -4,20 +4,27 @@ import {Provider} from 'react-redux'
 import store from '../store'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import * as config from '../store/config'
 import './index.styl'
 
 
 injectTapEventPlugin()
 
 
-
-export default ()=>(
-	<Provider store={store}>
-		<MuiThemeProvider>
-			<Switch>
-				<Route path='/admin' component={require('ssr-loader!./Admin')} />
-				<Route path='/' component={require('ssr-loader!./Main')} />
-			</Switch>
-		</MuiThemeProvider>
-	</Provider>
-)
+export default class extends React.Component{
+	componentDidMount(){
+		store.dispatch(config.get())
+	}
+	render(){
+		return (
+			<Provider store={store}>
+				<MuiThemeProvider>
+					<Switch>
+						<Route path='/admin' component={require('ssr-loader!./Admin')} />
+						<Route path='/' component={require('ssr-loader!./Main')} />
+					</Switch>
+				</MuiThemeProvider>
+			</Provider>
+		)
+	}
+}

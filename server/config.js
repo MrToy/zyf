@@ -7,7 +7,7 @@ router.get('/:name',async ctx=>{
 
 router.put('/:name',async ctx=>{
 	await ctx.mongo.collection('config').update({_id:ctx.params.name},ctx.request.body,{upsert:true})
-	ctx.status=201
+	ctx.status=204
 })
 
 module.exports=router
