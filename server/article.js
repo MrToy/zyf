@@ -3,7 +3,12 @@ const mongo = require('mongodb')
 const router = new Router()
 
 router.get('/',async ctx=>{
-	ctx.body=await ctx.mongo.collection('article').find().toArray()
+	ctx.body=await ctx.mongo.collection('article')
+		.find({},{content:0})
+		.sort({date:-1})
+		.limit(parseInt(ctx.query.limit)||0)
+		.skip(parseInt(ctx.query.skip)||0)
+		.toArray()
 })
 
 router.get('/:id',async ctx=>{

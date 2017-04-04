@@ -5,6 +5,7 @@ import Carouse from '../../../Carouse'
 import * as articles from '../../../store/articles'
 import {connect} from 'react-redux'
 import moment from 'moment'
+import {Link} from 'react-router-dom'
 
 
 const Infos=()=>(
@@ -41,11 +42,13 @@ class News extends React.Component{
 				<div className={style.center}>
 					<div className={style.panel}>
 						<Titlebar title="最新动态" info="COMPANY NEWS" link="/news" />
-						{data&&Object.keys(data).reverse().map(id=>(
-							<p key={id}>
-								{data[id].title}
-								<span className={style.date}>{moment(data[id].date).fromNow()}</span>
-							</p>
+						{data&&data.map(it=>(
+							<Link to={"/news/page/"+it._id} key={it._id}>
+								<p>
+									{it.title}
+									<span className={style.date}>{moment(it.date||0).fromNow()}</span>
+								</p>
+							</Link>
 						))}
 					</div>
 					<img className={style.img} src={require('./skill.jpg')} />

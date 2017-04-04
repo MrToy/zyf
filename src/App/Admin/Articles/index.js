@@ -43,6 +43,7 @@ export default class extends React.Component{
 		}
 		await articles.del(this.state.selected)
 		this.props.dispatch(articles.get())
+		this.state.selected=null
 	}
 	render(){
 		var data=this.props.data

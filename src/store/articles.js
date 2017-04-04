@@ -20,12 +20,32 @@ export function add(data){
 	})
 }
 
+export function getTops(){
+	return new Promise(resolve=>{
+		request
+			.get('/api/article?limit=10')
+			.end((err,res)=>{
+				resolve({type:'articles/tops',data:res.body})
+			})
+	})
+}
+
 export function get(){
 	return new Promise(resolve=>{
 		request
 			.get('/api/article')
 			.end((err,res)=>{
 				resolve({type:'articles/lists',data:res.body})
+			})
+	})
+}
+
+export function getOne(id){
+	return new Promise(resolve=>{
+		request
+			.get('/api/article/'+id)
+			.end((err,res)=>{
+				resolve(res.body)
 			})
 	})
 }
