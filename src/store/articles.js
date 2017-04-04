@@ -1,3 +1,5 @@
+import request from 'superagent'
+
 export const reducer=(state={tops:[],lists:[]},action)=>{
 	switch(action.type){
 		case 'articles/tops':
@@ -9,23 +11,29 @@ export const reducer=(state={tops:[],lists:[]},action)=>{
 	}
 }
 
-export const getTops=()=>dispatch=>{
-
+export function add(data){
+	return new Promise(resolve=>{
+		request
+			.post('/api/article')
+			.send(data)
+			.end(resolve)
+	})
 }
 
-export const getLists=()=>dispatch=>{
-
+export function get(){
+	return new Promise(resolve=>{
+		request
+			.get('/api/article')
+			.end((err,res)=>{
+				resolve({type:'articles/lists',data:res.body})
+			})
+	})
 }
 
-export async function getAfterList(end){
-
+export function del(id){
+	return new Promise(resolve=>{
+		request
+			.delete('/api/article/'+id)
+			.end(resolve)
+	})
 }
-
-export async function getBeforeList(start){
-
-}
-
-export function add(article){
-
-}
-
