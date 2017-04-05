@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import moment from 'moment'
 import * as articles from '../../../store/articles'
 import ReactQuill from 'react-quill'
+import {Link} from 'react-router-dom'
 import 'react-quill/dist/quill.snow.css'
 
 class ArticleForm extends React.Component{
@@ -84,7 +85,7 @@ export default class extends React.Component{
 					<TableBody deselectOnClickaway={false}>
 						{this.state.list.map(it=>(
 							<TableRow key={it._id}>
-								<TableRowColumn>{it._id}</TableRowColumn>
+								<TableRowColumn><Link style={{color:'#3d85f1'}} to={'/news/page/'+it._id}>{it._id}</Link></TableRowColumn>
 								<TableRowColumn>{it.title}</TableRowColumn>
 								<TableRowColumn>{it.type}</TableRowColumn>
 								<TableRowColumn>{moment(it.date||0).format('LLL')}</TableRowColumn>

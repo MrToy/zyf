@@ -17,7 +17,7 @@ export default class extends React.Component {
     		<Carouse />
         <div className={style.article}>
     		  <h1>{article.title}</h1>
-          <p>{article.content}</p>
+          <div dangerouslySetInnerHTML={{__html:article.content}}></div>
         </div>
     	</div>
     )
