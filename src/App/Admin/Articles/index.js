@@ -1,15 +1,15 @@
 import React from 'react'
-import {TextField,Toolbar,RaisedButton,Dialog} from 'material-ui'
+import {TextField,Toolbar,RaisedButton,Dialog,SelectField,MenuItem} from 'material-ui'
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table'
 import {NavigationArrowBack,NavigationArrowForward} from 'material-ui/svg-icons'
 import style from '../index.styl'
-import * as articles from '../../../store/articles'
 import {connect} from 'react-redux'
 import moment from 'moment'
+import * as articles from '../../../store/articles'
 
 
 class ArticleForm extends React.Component{
-	state={title:"",content:""}
+	state={title:"",content:"",type:"新闻中心"}
 	async submit(){
 		var data=this.state
 		data.date=new Date()
@@ -21,7 +21,11 @@ class ArticleForm extends React.Component{
 	render(){
 		return (
 			<div>
-				<TextField floatingLabelText="标题" value={this.state.title} onChange={(e,val)=>this.setState({title:val})} fullWidth={true} /><br/>
+				<TextField floatingLabelText="标题" value={this.state.title} onChange={(e,val)=>this.setState({title:val})} /><br/>
+				<SelectField floatingLabelText="分类" value={this.state.type} onChange={(e,i,val)=>this.setState({type:val})} >
+					<MenuItem value="新闻中心" primaryText="新闻中心" />
+					<MenuItem value="加盟动态" primaryText="加盟动态" />
+				</SelectField>
 				<TextField floatingLabelText="内容" value={this.state.content} onChange={(e,val)=>this.setState({content:val})} multiLine={true} fullWidth={true} /><br/><br/>
 				<RaisedButton onClick={::this.submit} label="保存" />&emsp;
 				<RaisedButton onClick={this.props.onClose} label="取消" />
@@ -30,12 +34,12 @@ class ArticleForm extends React.Component{
 	}
 }
 
-@connect(({articles})=>({data:articles.lists}))
 export default class extends React.Component{
-	state={open:false,selected:null}
-	componentDidMount(){
+	state={open:false,selected:null,list:[]}
+	async componentDidMount(){
 		moment.locale('zh-cn')
-		this.props.dispatch(articles.get())
+		var list=await articles.get()
+		this.setState({list})
 	}
 	async del(){
 		if(!confirm("确定删除?")){
@@ -46,13 +50,12 @@ export default class extends React.Component{
 		this.state.selected=null
 	}
 	render(){
-		var data=this.props.data
 		return(
 			<div>
 				<Table onRowSelection={it=>this.setState({selected:it[0]!==undefined?data[it[0]]._id:null})}>
 					<TableHeader>
 						<TableRow>
-							<TableHeaderColumn colSpan="3">
+							<TableHeaderColumn colSpan="4">
 								<RaisedButton className={style.button} label="添加" onClick={()=>this.setState({open:true})} />
 								<RaisedButton className={style.button} icon={<NavigationArrowBack />} />
 								<RaisedButton className={style.button} icon={<NavigationArrowForward />} />
@@ -62,14 +65,16 @@ export default class extends React.Component{
 						<TableRow>
 							<TableHeaderColumn>ID</TableHeaderColumn>
 							<TableHeaderColumn>标题</TableHeaderColumn>
+							<TableHeaderColumn>分类</TableHeaderColumn>
 							<TableHeaderColumn>日期</TableHeaderColumn>
 						</TableRow>
 					</TableHeader>
 					<TableBody deselectOnClickaway={false}>
-						{data&&data.map(it=>(
+						{this.state.list.map(it=>(
 							<TableRow key={it._id}>
 								<TableRowColumn>{it._id}</TableRowColumn>
 								<TableRowColumn>{it.title}</TableRowColumn>
+								<TableRowColumn>{it.type}</TableRowColumn>
 								<TableRowColumn>{moment(it.date||0).format('LLL')}</TableRowColumn>
 							</TableRow>
 						))}

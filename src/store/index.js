@@ -4,13 +4,12 @@ import reduxPromise from 'redux-promise'
 import st from 'store'
 import * as config from './config'
 import * as user from './user'
-import * as articles from './articles'
+
 
 
 const store = createStore(combineReducers({
 	user:user.reducer,
-	config:config.reducer,
-	articles:articles.reducer
+	config:config.reducer
 }),st.get("cache"),applyMiddleware(thunk,reduxPromise))
 
 

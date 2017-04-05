@@ -1,15 +1,5 @@
 import request from 'superagent'
 
-export const reducer=(state={tops:[],lists:[]},action)=>{
-	switch(action.type){
-		case 'articles/tops':
-			return {...state,tops:action.data}
-		case 'articles/lists':
-			return {...state,lists:action.data}
-		default:
-			return state
-	}
-}
 
 export function add(data){
 	return new Promise(resolve=>{
@@ -20,22 +10,12 @@ export function add(data){
 	})
 }
 
-export function getTops(){
+export function get(){
 	return new Promise(resolve=>{
 		request
 			.get('/api/article?limit=10')
 			.end((err,res)=>{
-				resolve({type:'articles/tops',data:res.body})
-			})
-	})
-}
-
-export function get(){
-	return new Promise(resolve=>{
-		request
-			.get('/api/article')
-			.end((err,res)=>{
-				resolve({type:'articles/lists',data:res.body})
+				resolve(res.body)
 			})
 	})
 }

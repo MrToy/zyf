@@ -29,11 +29,14 @@ const Infos=()=>(
 	</div>
 )
 
-@connect(({articles})=>({data:articles.tops}))
 class News extends React.Component{
-	componentDidMount(){
-		this.props.dispatch(articles.getTops())
+	state={list:[]}
+	componentWillMount(){
 		moment.locale('zh-cn')
+	}
+	async componentDidMount(){
+		var list=await articles.get()
+		this.setState({list})
 	}
 	render(){
 		var data=this.props.data
@@ -42,7 +45,7 @@ class News extends React.Component{
 				<div className={style.center}>
 					<div className={style.panel}>
 						<Titlebar title="最新动态" info="COMPANY NEWS" link="/news" />
-						{data&&data.map(it=>(
+						{this.state.list.map(it=>(
 							<Link to={"/news/page/"+it._id} key={it._id}>
 								<p>
 									{it.title}

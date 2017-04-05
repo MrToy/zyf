@@ -3,6 +3,7 @@ import Carouse from '../../../Carouse'
 import MenuBox from '../../../MenuBox'
 import Titlebar from '../../../Titlebar'
 
+
 const data=[
 	{to:'center',text:'新闻中心',component:()=>(
 		<div>
