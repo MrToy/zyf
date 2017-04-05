@@ -2,7 +2,7 @@ import React from 'react'
 import style from './index.styl'
 import Titlebar from '../../../Titlebar'
 import Carouse from '../../../Carouse'
-import * as articles from '../../../store/articles'
+import ArticleList from '../../../ArticleList'
 import {connect} from 'react-redux'
 import moment from 'moment'
 import {Link} from 'react-router-dom'
@@ -29,53 +29,21 @@ const Infos=()=>(
 	</div>
 )
 
-class News extends React.Component{
-	state={list:[]}
-	componentWillMount(){
-		moment.locale('zh-cn')
-	}
-	async componentDidMount(){
-		var list=await articles.get()
-		this.setState({list})
-	}
-	render(){
-		var data=this.props.data
-		return (
-			<div className={style.news}>
-				<div className={style.center}>
-					<div className={style.panel}>
-						<Titlebar title="最新动态" info="COMPANY NEWS" link="/news" />
-						{this.state.list.map(it=>(
-							<Link to={"/news/page/"+it._id} key={it._id}>
-								<p>
-									{it.title}
-									<span className={style.date}>{moment(it.date||0).fromNow()}</span>
-								</p>
-							</Link>
-						))}
-					</div>
-					<img className={style.img} src={require('./skill.jpg')} />
-				</div>
-				<div className={style.bottom}>
-					<img src={require('./p8.png')} />
-				</div>
+
+const News=()=>(
+	<div className={style.news}>
+		<div className={style.center}>
+			<div className={style.panel}>
+				<Titlebar title="最新动态" info="COMPANY NEWS" link="/news" />
+				<ArticleList />
 			</div>
-		)
-	}
-}
-// const News=()=>(
-// 	<div className={style.news}>
-// 		<div className={style.center}>
-// 			<div className={style.panel}>
-// 				<Titlebar title="最新动态" info="COMPANY NEWS" link="/" />
-// 			</div>
-// 			<img className={style.img} src={require('./skill.jpg')} />
-// 		</div>
-// 		<div className={style.bottom}>
-// 			<img src={require('./p8.png')} />
-// 		</div>
-// 	</div>
-// )
+			<img className={style.img} src={require('./skill.jpg')} />
+		</div>
+		<div className={style.bottom}>
+			<img src={require('./p8.png')} />
+		</div>
+	</div>
+)
 
 export default ()=>(
 	<div>

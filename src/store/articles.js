@@ -1,6 +1,5 @@
 import request from 'superagent'
 
-
 export function add(data){
 	return new Promise(resolve=>{
 		request
@@ -10,10 +9,10 @@ export function add(data){
 	})
 }
 
-export function get(){
+export function get({type,page}={}){
 	return new Promise(resolve=>{
 		request
-			.get('/api/article?limit=10')
+			.get(`/api/article?limit=10&type=${type}`)
 			.end((err,res)=>{
 				resolve(res.body)
 			})
