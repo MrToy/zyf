@@ -6,7 +6,8 @@ import style from '../index.styl'
 import {connect} from 'react-redux'
 import moment from 'moment'
 import * as articles from '../../../store/articles'
-
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
 
 class ArticleForm extends React.Component{
 	state={title:"",content:"",type:"新闻中心"}
@@ -16,7 +17,7 @@ class ArticleForm extends React.Component{
 		await articles.add(data)
 		alert("保存成功")
 		this.props.onClose()
-		this.props.dispatch(articles.get())
+		this.props.onRefresh()
 	}
 	render(){
 		return (
@@ -25,8 +26,16 @@ class ArticleForm extends React.Component{
 				<SelectField floatingLabelText="分类" value={this.state.type} onChange={(e,i,val)=>this.setState({type:val})} >
 					<MenuItem value="新闻中心" primaryText="新闻中心" />
 					<MenuItem value="加盟动态" primaryText="加盟动态" />
-				</SelectField>
-				<TextField floatingLabelText="内容" value={this.state.content} onChange={(e,val)=>this.setState({content:val})} multiLine={true} fullWidth={true} /><br/><br/>
+				</SelectField><br/>
+				<ReactQuill style={{height:300}} value={this.state.content} onChange={val=>this.setState({content:val})} modules={{
+					toolbar: [
+						[{ 'header': [1,2,3,4,5,false] }],
+						['bold', 'italic', 'underline','strike', 'blockquote'],
+						[{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+						['link', 'image'],
+						['clean']
+					]
+				}} /><br/><br/><br/>
 				<RaisedButton onClick={::this.submit} label="保存" />&emsp;
 				<RaisedButton onClick={this.props.onClose} label="取消" />
 			</div>
@@ -36,8 +45,11 @@ class ArticleForm extends React.Component{
 
 export default class extends React.Component{
 	state={open:false,selected:null,list:[]}
-	async componentDidMount(){
+	componentDidMount(){
 		moment.locale('zh-cn')
+		this.refresh()
+	}
+	async refresh(){
 		var list=await articles.get()
 		this.setState({list})
 	}
@@ -81,7 +93,10 @@ export default class extends React.Component{
 					</TableBody>
 				</Table>
 				<Dialog title="文章编辑" modal={false} open={this.state.open} onRequestClose={()=>this.setState({open:false})} autoScrollBodyContent={true}>
-					<ArticleForm onClose={()=>this.setState({open:false})} dispatch={this.props.dispatch} />
+					<ArticleForm
+						onClose={()=>this.setState({open:false})}
+						dispatch={this.props.dispatch}
+						onRefresh={::this.refresh} />
         </Dialog>
 			</div>
 		)
