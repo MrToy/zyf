@@ -23,7 +23,7 @@ export default class extends React.Component{
     	<div className={style.box}>
         <h1>登录</h1>
     		<TextField floatingLabelText="用户名" value={this.state.name} onChange={(e,val)=>this.setState({name:val})}  /><br/>
-        <TextField floatingLabelText="密码" value={this.state.pass} onChange={(e,val)=>this.setState({pass:val})} /><br/><br/>
+        <TextField type="password" floatingLabelText="密码" value={this.state.pass} onChange={(e,val)=>this.setState({pass:val})} /><br/><br/>
         <RaisedButton label="确定" onClick={::this.login} /><br/>
     	</div>
     )
