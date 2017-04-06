@@ -58,13 +58,13 @@ export default class extends React.Component{
 			return
 		}
 		await articles.del(this.state.selected)
-		this.props.dispatch(articles.get())
-		this.state.selected=null
+		await this.refresh()
+		this.setState({selected:null})
 	}
 	render(){
 		return(
 			<div>
-				<Table onRowSelection={it=>this.setState({selected:it[0]!==undefined?data[it[0]]._id:null})}>
+				<Table onRowSelection={it=>this.setState({selected:it[0]!==undefined?this.state.list[it[0]]._id:null})}>
 					<TableHeader>
 						<TableRow>
 							<TableHeaderColumn colSpan="4">
@@ -81,8 +81,8 @@ export default class extends React.Component{
 							<TableHeaderColumn>日期</TableHeaderColumn>
 						</TableRow>
 					</TableHeader>
-					<TableBody deselectOnClickaway={false}>
-						{this.state.list.map(it=>(
+					<TableBody deselectOnClickaway={false} key={this.state.list.length}>
+						{this.state.list.map((it,i)=>(
 							<TableRow key={it._id}>
 								<TableRowColumn><Link style={{color:'#3d85f1'}} to={'/news/page/'+it._id}>{it._id}</Link></TableRowColumn>
 								<TableRowColumn>{it.title}</TableRowColumn>
@@ -95,7 +95,6 @@ export default class extends React.Component{
 				<Dialog title="文章编辑" modal={false} open={this.state.open} onRequestClose={()=>this.setState({open:false})} autoScrollBodyContent={true}>
 					<ArticleForm
 						onClose={()=>this.setState({open:false})}
-						dispatch={this.props.dispatch}
 						onRefresh={::this.refresh} />
         </Dialog>
 			</div>
