@@ -10,8 +10,8 @@ class Config {
 	set(data){
 		return new Promise(resolve=>{
 			request
-				.put('/api/config/meta?token='+user.state.token)
-				.send(data)
+				.put('/api/config/meta')
+				.send(Object.assign(data,{token:user.state.token}))
 				.end(()=>{
 					this.state=data
 					resolve()
@@ -19,11 +19,14 @@ class Config {
 		})
 	}
 	get(){
-		request
-			.get('/api/config/meta')
-			.end((err,res)=>{
-				this.state=res.body
-			})
+		return new Promise(resolve=>{
+			request
+				.get('/api/config/meta')
+				.end((err,res)=>{
+					this.state=res.body
+					resolve()
+				})
+		})
 	}
 }
 

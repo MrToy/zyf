@@ -11,7 +11,8 @@ export default class extends React.Component{
 		await config.set(this.state)
 		alert("保存成功")
 	}
-	componentDidMount(){
+	async componentDidMount(){
+		await config.get()
 		this.setState(config.state)
 	}
 	render(){
