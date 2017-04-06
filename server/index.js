@@ -10,6 +10,7 @@ const Router = require('koa-router')
 const cors = require('koa-cors')
 const article = require('./article')
 const configs = require('./config')
+const user = require('./user')
 
 const template=require('fs').readFileSync('./dist/index.html').toString()
 
@@ -17,6 +18,7 @@ const template=require('fs').readFileSync('./dist/index.html').toString()
 const router = new Router()
 router.use('/article',article.routes(),article.allowedMethods())
 router.use('/config',configs.routes(),configs.allowedMethods())
+router.use('/user',user.routes(),user.allowedMethods())
 
 const app = new Koa()
 app.use(logger())

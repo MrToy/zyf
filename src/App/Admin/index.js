@@ -4,7 +4,7 @@ import {ActionHome,ActionBuild,AvFiberNew,CommunicationTextsms} from 'material-u
 import style from './index.styl'
 import {Link,Switch,Route,Redirect} from 'react-router-dom'
 import cx from 'classnames'
-
+import user from '../../store/user'
 
 const MenuLink=({to,Icon,children})=>(
 	<Route path={to} children={({match})=>(

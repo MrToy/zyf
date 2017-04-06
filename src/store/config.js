@@ -1,5 +1,6 @@
 import request from 'superagent'
 import {observable} from "mobx"
+import user from './user'
 
 class Config {
 	@observable state={}
@@ -9,7 +10,7 @@ class Config {
 	set(data){
 		return new Promise(resolve=>{
 			request
-				.put('/api/config/meta')
+				.put('/api/config/meta?token='+user.state.token)
 				.send(data)
 				.end(()=>{
 					this.state=data
