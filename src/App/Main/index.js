@@ -86,6 +86,7 @@ export default ()=>(
 				<Route path='/join' component={require('ssr-loader!./Join')} />
 				<Route path='/strength' component={require('ssr-loader!./Strength')} />
 				<Route path='/foods' component={require('ssr-loader!./Foods')} />
+				<Route path='/login' component={require('ssr-loader!./User/login')} />
 				<Route path='/news/page/:id' component={require('ssr-loader!./News/page')} />
 				<Route path='/news' component={require('ssr-loader!./News')} />
 				<Route path='/products' component={require('ssr-loader!./Products')} />

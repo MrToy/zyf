@@ -12,7 +12,8 @@ export function add(data){
 export function get({type,page}={}){
 	return new Promise(resolve=>{
 		request
-			.get(`/api/article?limit=10&type=${type}`)
+			.get('/api/article')
+			.query({limit:10,type})
 			.end((err,res)=>{
 				resolve(res.body)
 			})
