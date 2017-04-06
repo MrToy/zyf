@@ -3,7 +3,6 @@ import {TextField,Toolbar,RaisedButton,Dialog,SelectField,MenuItem} from 'materi
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table'
 import {NavigationArrowBack,NavigationArrowForward} from 'material-ui/svg-icons'
 import style from '../index.styl'
-import {connect} from 'react-redux'
 import moment from 'moment'
 import * as articles from '../../../store/articles'
 import ReactQuill from 'react-quill'

@@ -1,26 +1,9 @@
-export const reducer=(state=null,action)=>{
-	switch(action.type){
-		case 'user/login':
-			return {...state,...action.data}
-		case 'user/logout':
-			return null
-		default:
-			return state
-	}
-}
+import request from 'superagent'
+import {observable} from "mobx"
 
-export function init(store){
+class User {
+	@observable state={}
 
 }
 
-export function login(email, password){
-
-}
-
-export function logout(){
-
-}
-
-export function register(email,password){
-
-}
+export default new Config()

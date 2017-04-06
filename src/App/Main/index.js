@@ -1,14 +1,15 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {Link,Switch,Route} from 'react-router-dom'
 import style from './index.styl'
+import {observer} from "mobx-react"
+import config from '../../store/config'
 
-const Header=connect(({config})=>({config}))(({config})=>(
+const Header=observer(()=>(
 	<div className={style.header}>
 		<img className={style.logo} src={require("./logo.png")} />
 		<div className={style.text} title="tel">
 			<img src={require("./p33.png")} />
-			<span>{config.tel1}</span>
+			<span>{config.state.tel1}</span>
 		</div>
 	</div>
 ))
@@ -50,36 +51,8 @@ const Links=()=>{
 	)
 }
 
-// @connect()
-// class Footer extends React.Component{
-// 	render(){
-// 		console.log(this.props)
-// 		return(
-// 			<div className={style.footer}>
-// 				<div className={style.center}>
-// 					<img className={style.qrcode} src={require('./qrcode.png')} />
-// 					<div className={style.text}>
-// 						周渔府微信公众号正式开通了<br/>
-// 						欢迎新老朋友在微信平台中订阅<br/>
-// 						订阅号：重庆周渔府<br/>
-// 						二维码：（用手机直接扫描）<br/>
-// 					</div>
-// 					<div className={style.line}></div>
-// 					<div className={style.text}>
-// 						重庆周渔府餐饮文化有限公司<br/>
-// 						公司地址：重庆市九龙坡区谢家湾正街55号华润广场B座1908室（万象城旁）<br/>
-// 						加盟热线：023－68824366 13638328738<br/>
-// 						服务热线：023－68825366 传真：68823366转700<br/>
-// 						网址：www.zhouyufu.com <br/>
-// 						E－mail：zyf62212@163.com<br/>
-// 					</div>
-// 				</div>
-// 			</div>
-// 		)
-// 	}
-// }
 
-const Footer=connect(({config})=>({config}))(({config})=>(
+const Footer=observer(()=>(
 	<div className={style.footer}>
 		<div className={style.center}>
 			<img className={style.qrcode} src={require('./qrcode.png')} />
@@ -92,11 +65,11 @@ const Footer=connect(({config})=>({config}))(({config})=>(
 			<div className={style.line}></div>
 			<div className={style.text}>
 				重庆周渔府餐饮文化有限公司<br/>
-				公司地址：{config.address}<br/>
-				加盟热线：{config.tel1}<br/>
-				服务热线：{config.tel2} 传真：{config.fox}<br/>
-				网址：{config.site} <br/>
-				E－mail：{config.mail}<br/>
+				公司地址：{config.state.address}<br/>
+				加盟热线：{config.state.tel1}<br/>
+				服务热线：{config.state.tel2} 传真：{config.state.fox}<br/>
+				网址：{config.state.site} <br/>
+				E－mail：{config.state.mail}<br/>
 			</div>
 		</div>
 	</div>
