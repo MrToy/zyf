@@ -4,9 +4,6 @@ import {ActionHome,ActionBuild,AvFiberNew,CommunicationTextsms} from 'material-u
 import style from './index.styl'
 import {Link,Switch,Route,Redirect} from 'react-router-dom'
 import cx from 'classnames'
-//import {connect} from 'react-redux'
-// import * as configActions from '../store/config'
-// import * as userActions from '../store/user'
 
 
 const MenuLink=({to,Icon,children})=>(
@@ -15,7 +12,7 @@ const MenuLink=({to,Icon,children})=>(
 	)} />
 )
 
-//@connect(({config,user})=>({config,user}))
+
 export default ({match})=>(
 	<div>
 		<AppBar title="内容管理" style={{backgroundColor:"#b81c25"}} iconElementLeft={

@@ -1,29 +1,29 @@
 import request from 'superagent'
+import {observable} from "mobx"
 
-export const reducer=(state={},action)=>{
-	switch(action.type){
-		case 'config/meta':
-			return {...state,...action.data}
-		default:
-			return state
+class Config {
+	@observable state={}
+	constructor(){
+		this.get()
 	}
-}
-
-export function set(data){
-	return new Promise(resolve=>{
-		request
-			.put('/api/config/meta')
-			.send(data)
-			.end(resolve)
-	})
-}
-
-export function get(){
-	return new Promise(resolve=>{
+	set(data){
+		return new Promise(resolve=>{
+			request
+				.put('/api/config/meta')
+				.send(data)
+				.end(()=>{
+					this.state=data
+					resolve()
+				})
+		})
+	}
+	get(){
 		request
 			.get('/api/config/meta')
 			.end((err,res)=>{
-				resolve({type:'config/meta',data:res.body})
+				this.state=res.body
 			})
-	})
+	}
 }
+
+export default new Config()

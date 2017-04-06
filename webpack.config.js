@@ -68,7 +68,7 @@ const prodConfig=[
 		name:"browser",
 		entry:{
 			main:"./src/client.js",
-			react:["react", "react-dom", "react-router-dom","react-redux", "redux"]
+			react:["react", "react-dom", "react-router-dom","mobx", "mobx-react"]
 		},
 		plugins:common.plugins.concat([
 			new HtmlWebpackPlugin({
