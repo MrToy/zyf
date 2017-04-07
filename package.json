@@ -54,6 +54,7 @@
     "koa-logger": "^2.0.1",
     "koa-mongo": "^0.7.0",
     "koa-mount": "^3.0.0",
+    "koa-rewrite": "^2.1.0",
     "koa-router": "^7.0.1",
     "koa-serve-static": "^1.0.0",
     "material-ui": "^0.17.1",
