@@ -63,46 +63,33 @@ var common={
 }
 
 
-const prodConfig=[
-	Object.assign({},common,{
-		name:"browser",
-		entry:{
-			main:"./src/client.js",
-			react:["react", "react-dom", "react-router-dom","mobx", "mobx-react"]
-		},
-		plugins:common.plugins.concat([
-			new HtmlWebpackPlugin({
-				template: 'src/index.html',
-				favicon:'src/favicon.ico',
-				minify:{collapseWhitespace: true}
-			}),
-			new webpack.optimize.CommonsChunkPlugin({
-				names:["react"]
-			}),
-			new webpack.optimize.UglifyJsPlugin({
-				compress: { warnings: false },
-				output: { comments: false }
-			})
-		])
-	}),
-	Object.assign({},common,{
-		name: "server",
-		entry:"./src/server.js",
-		target:"node",
-		output:Object.assign({},common.output,{
-			path:path.join(__dirname,"dist"),
-			filename: "server.js",
-			libraryTarget:"commonjs2"
+const prodConfig=Object.assign({},common,{
+	name:"browser",
+	entry:{
+		main:"./src/client.js",
+		react:["react", "react-dom", "react-router-dom","mobx", "mobx-react"]
+	},
+	plugins:common.plugins.concat([
+		new HtmlWebpackPlugin({
+			template: 'src/index.html',
+			favicon:'src/favicon.ico',
+			minify:{collapseWhitespace: true}
 		}),
-		externals: /^[a-z\-0-9]+$/
-	})
-]
+		new webpack.optimize.CommonsChunkPlugin({
+			names:["react"]
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			compress: { warnings: false },
+			output: { comments: false }
+		})
+	])
+})
 
 const devConfig=Object.assign({},common,{
 	name:"dev-browser",
 	entry:[
 		'webpack/hot/only-dev-server',
-		prodConfig[0].entry.main
+		prodConfig.entry.main
 	],
 	devtool:'eval-source-map',
 	devServer:{
