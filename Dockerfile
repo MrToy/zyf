@@ -1,5 +1,4 @@
-FROM node:slim
+FROM nginx
 WORKDIR /usr/app
-ADD . .
-RUN npm install --production
-CMD npm start
+ADD dist /usr/share/nginx/html
+ADD nginx.conf /etc/nginx/conf.d/default.conf
