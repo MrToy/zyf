@@ -1,14 +1,14 @@
-web:
-  image: daocloud.io/qq08420/zyf
+server:
+  image: daocloud.io/qq08420/zyf-server:latest
   links:
-    - mongo:mongo
+  - mongo:mongo
 mongo:
-    image: mongo
-    volumes:
-        - /data/db:/data/db
-proxy:
-    image: daocloud.io/qq08420/zyf-server
-    ports:
-        - 80:80
-    links:
-        - web:web
+  image: mongo
+  volumes:
+  - /data/db:/data/db
+static:
+  image: daocloud.io/qq08420/zyf:latest
+  ports:
+  - 80:80
+  links:
+  - server:web

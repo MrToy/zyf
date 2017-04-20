@@ -63,7 +63,7 @@ const Footer=observer(()=>(
 				二维码：（用手机直接扫描）<br/>
 			</div>
 			<div className={style.line}></div>
-			<div className={style.text}>
+			<div className={style.text} style={{width: 497}}>
 				重庆周渔府餐饮文化有限公司<br/>
 				公司地址：{config.state.address}<br/>
 				加盟热线：{config.state.tel1}<br/>
