@@ -36,8 +36,6 @@ const Links=()=>{
 		{src:"http://www.cqcysh.com/",text:"重庆餐饮商会"},
 		{src:"http://www.cqhgw.cn/",text:"重庆市火锅协会"},
 		{src:"http://18.sj998.com/31760/",text:"商界招商网"},
-		{src:"http://www.cyin.com.cn/",text:"中国餐饮网"},
-		{src:"http://www.22cn.net/",text:"中国餐饮加盟"},
 		{src:"http://www.dianping.com/",text:"大众点评"},
 		{src:"http://www.jiameng.com/zhouyufu/vip.htm",text:"全球加盟网"},
 	]
